@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>PersianNov.DataAccess</AssemblyName>
+    <RootNamespace>PersianNov.DataAccess</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataStructure\DataStructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Framework">
+      <HintPath>..\TParty\Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn">
+      <HintPath>..\TParty\Radyn.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Utility">
+      <HintPath>..\TParty\Radyn.Utility.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "library": "bootstrap-v4-rtl@4.4.1-2",
+      "destination": "wwwroot/bootstrap-v4-rtl/"
+    }
+  ]
+}
