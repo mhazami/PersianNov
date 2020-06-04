@@ -5,6 +5,11 @@
     {
       "library": "bootstrap-v4-rtl@4.4.1-2",
       "destination": "wwwroot/bootstrap-v4-rtl/"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "font-awesome@4.7.0",
+      "destination": "wwwroot/lib/font-awesome/"
     }
   ]
 }
