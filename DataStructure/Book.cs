@@ -18,9 +18,9 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("Id", value); }
         }
 
-        public Int32 _authorId;
+        public Int32? _authorId;
         [DbType("int")]
-        public Int32 AuthorId
+        public Int32? AuthorId
         {
             get { return _authorId; }
             set { base.SetPropertyValue("AuthorId", value); }

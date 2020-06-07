@@ -32,7 +32,7 @@ namespace PersianNov.DataStructure
 
 
         public string _registerDate;
-        [DbType("nvarchar(10)")]
+        [DbType("varchar(10)")]
         public string RegisterDate
         {
             get { return _registerDate; }
@@ -41,7 +41,7 @@ namespace PersianNov.DataStructure
 
 
         public string _number;
-        [DbType("nvarchar(10)")]
+        [DbType("varchar(10)")]
         public string Number
         {
             get { return _number; }

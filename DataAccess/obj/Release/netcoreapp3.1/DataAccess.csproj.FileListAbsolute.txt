@@ -1,0 +1,15 @@
+G:\WorkSpace\PersianNov\DataAccess\bin\Release\netcoreapp3.1\PersianNov.DataAccess.deps.json
+G:\WorkSpace\PersianNov\DataAccess\bin\Release\netcoreapp3.1\PersianNov.DataAccess.dll
+G:\WorkSpace\PersianNov\DataAccess\bin\Release\netcoreapp3.1\PersianNov.DataAccess.pdb
+G:\WorkSpace\PersianNov\DataAccess\bin\Release\netcoreapp3.1\Framework.dll
+G:\WorkSpace\PersianNov\DataAccess\bin\Release\netcoreapp3.1\PersianNov.DataStructure.dll
+G:\WorkSpace\PersianNov\DataAccess\bin\Release\netcoreapp3.1\Radyn.dll
+G:\WorkSpace\PersianNov\DataAccess\bin\Release\netcoreapp3.1\Radyn.Utility.dll
+G:\WorkSpace\PersianNov\DataAccess\bin\Release\netcoreapp3.1\PersianNov.DataStructure.pdb
+G:\WorkSpace\PersianNov\DataAccess\obj\Release\netcoreapp3.1\DataAccess.csprojAssemblyReference.cache
+G:\WorkSpace\PersianNov\DataAccess\obj\Release\netcoreapp3.1\DataAccess.csproj.CoreCompileInputs.cache
+G:\WorkSpace\PersianNov\DataAccess\obj\Release\netcoreapp3.1\DataAccess.AssemblyInfoInputs.cache
+G:\WorkSpace\PersianNov\DataAccess\obj\Release\netcoreapp3.1\DataAccess.AssemblyInfo.cs
+G:\WorkSpace\PersianNov\DataAccess\obj\Release\netcoreapp3.1\DataAccess.csproj.CopyComplete
+G:\WorkSpace\PersianNov\DataAccess\obj\Release\netcoreapp3.1\PersianNov.DataAccess.dll
+G:\WorkSpace\PersianNov\DataAccess\obj\Release\netcoreapp3.1\PersianNov.DataAccess.pdb

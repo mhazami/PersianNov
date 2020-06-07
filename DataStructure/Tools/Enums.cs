@@ -19,6 +19,14 @@ namespace PersianNov.DataStructure.Tools
             NonAccept = 3
         }
 
+        public enum PaymentRole : byte
+        {
+            [Description("برداشت")]
+            Success = 1,
+            [Description("واریز")]
+            Failed = 2,
+        }
+
         public enum PaymentTaskStatus : byte
         {
             [Description("")]
@@ -47,7 +55,9 @@ namespace PersianNov.DataStructure.Tools
             [Description("کارت به کارت")]
             Card = 2,
             [Description("آنلاین")]
-            Online = 3
+            Online = 3,
+            [Description("نقدی")]
+            Cash = 4
         }
 
 

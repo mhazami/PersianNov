@@ -35,7 +35,7 @@ namespace PersianNov.DataStructure
 
 
         public string _number;
-        [DbType("nvarchar(10)")]
+        [DbType("varchar(10)")]
         public string Number
         {
             get { return _number; }

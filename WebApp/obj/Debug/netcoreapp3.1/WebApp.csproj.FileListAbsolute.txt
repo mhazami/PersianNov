@@ -361,3 +361,4 @@ G:\WorkSpace\PersianNov\WebApp\bin\Debug\netcoreapp3.1\Radyn.Utility.dll
 G:\WorkSpace\PersianNov\WebApp\bin\Debug\netcoreapp3.1\PersianNov.DataAccess.pdb
 G:\WorkSpace\PersianNov\WebApp\bin\Debug\netcoreapp3.1\PersianNov.DataStructure.pdb
 G:\WorkSpace\PersianNov\WebApp\bin\Debug\netcoreapp3.1\PersianNov.Services.pdb
+G:\WorkSpace\PersianNov\WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AdminLayout.cshtml.g.cs

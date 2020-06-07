@@ -64,7 +64,7 @@ namespace PersianNov.DataStructure
 
 
         public string _number;
-        [DbType("nvarchar(10)")]
+        [DbType("varchar(10)")]
         public string Number
         {
             get { return _number; }
@@ -106,6 +106,15 @@ namespace PersianNov.DataStructure
         }
 
 
+        public PaymentRole _paymentRole;
+        [DbType("tinyint")]
+        public PaymentRole PaymentRole
+        {
+            get { return _paymentRole; }
+            set { base.SetPropertyValue("PaymentRole", value); }
+        }
+
+
 
         public Guid? _imageBankDoc;
         [DbType("uniqueidentifier")]
@@ -116,6 +125,9 @@ namespace PersianNov.DataStructure
         }
         [Assosiation(PropName = "ImageBankDoc")]
         public File ImageBankDocFile { get; set; }
+
+
+
 
 
         [DisableAction(DisableInsert = true, DisableUpdate = true, DiableSelect = true)]

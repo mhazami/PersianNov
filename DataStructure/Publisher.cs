@@ -78,7 +78,7 @@ namespace PersianNov.DataStructure
         }
 
         public string _createDate;
-        [DbType("nvarchar(10)")]
+        [DbType("varchar(10)")]
         public string CreateDate
         {
             get { return _createDate; }
