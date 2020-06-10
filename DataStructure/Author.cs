@@ -109,10 +109,6 @@ namespace PersianNov.DataStructure
         
 
 
-        [DisableAction(DisableInsert = true, DisableUpdate = true, DiableSelect = true)]
-        public override string DescriptionField
-        {
-            get { return $"{FirstName} {LastName}"; }
-        }
+  
     }
 }

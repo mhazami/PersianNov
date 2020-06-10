@@ -31,11 +31,7 @@ namespace PersianNov.DataStructure
         [DisableAction(DisableInsert = true, DisableUpdate = true, DiableSelect = true)]
         public long MaxSize { get; set; }
 
-        [DisableAction(DisableInsert = true, DisableUpdate = true, DiableSelect = true)]
-        public override string DescriptionField
-        {
-            get { return this.FileName; }
-        }
+   
         [DisableAction(DisableInsert = true, DisableUpdate = true, DiableSelect = true)]
         public string FullName
         {

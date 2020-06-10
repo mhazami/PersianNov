@@ -143,6 +143,14 @@ body {
     background-color: #fff;
 }
 
+figcaption h2 {
+    color: #fff;
+}
+
+    figure .buttons > a {
+        color: #fff;
+    }
+
 
 @media (max-width: 320px) {
     .main-header .logo {

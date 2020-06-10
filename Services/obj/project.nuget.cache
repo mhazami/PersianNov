@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "W7bpc9maYz6QH5nQHqDAy9fHY6oSAf3jdJaebnjCvCT57ytukUNFw6ygKnaXVapUMWqiTjam/fhgstkMNf4FSQ==",
+  "dgSpecHash": "JWOJc2RsN/U+6WZ8gD5gtGU6zkRRLgmkJv1pI7tKzbr6/rjAQM7Xgo3nDEdtX3sn11VFFZ5dQkVF1vC1UxmXcQ==",
   "success": true,
   "projectFilePath": "G:\\WorkSpace\\PersianNov\\Services\\Services.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\mohammad\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.5\\microsoft.extensions.configuration.3.1.5.nupkg.sha512",
+    "C:\\Users\\mohammad\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.1.5\\microsoft.extensions.configuration.abstractions.3.1.5.nupkg.sha512",
+    "C:\\Users\\mohammad\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.5\\microsoft.extensions.primitives.3.1.5.nupkg.sha512"
+  ],
   "logs": []
 }

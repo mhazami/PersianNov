@@ -346,7 +346,6 @@ G:\WorkSpace\PersianNov\WebApp\obj\Release\netcoreapp3.1\WebApp.TagHelpers.input
 G:\WorkSpace\PersianNov\WebApp\obj\Release\netcoreapp3.1\WebApp.TagHelpers.output.cache
 G:\WorkSpace\PersianNov\WebApp\obj\Release\netcoreapp3.1\WebApp.RazorCoreGenerate.cache
 G:\WorkSpace\PersianNov\WebApp\obj\Release\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-G:\WorkSpace\PersianNov\WebApp\obj\Release\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 G:\WorkSpace\PersianNov\WebApp\obj\Release\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 G:\WorkSpace\PersianNov\WebApp\obj\Release\netcoreapp3.1\Razor\Views\Shared\_AdminLayout.cshtml.g.cs
 G:\WorkSpace\PersianNov\WebApp\obj\Release\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs

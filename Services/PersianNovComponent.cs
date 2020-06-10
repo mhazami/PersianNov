@@ -16,12 +16,20 @@ namespace PersianNov.Services
         {
             get { return _instance ?? (_instance = new PersianNovComponent()); }
         }
-
+        public static string ConnectionString { get; set; }
         public IAuthorFacade AuthorFacade
         {
             get
             {
                 return new AuthorFacade();
+            }
+        }
+
+        public IUserFacade UserFacade
+        {
+            get
+            {
+                return new UserFacade();
             }
         }
 

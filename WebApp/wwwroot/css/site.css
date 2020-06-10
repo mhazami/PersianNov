@@ -56,14 +56,14 @@ html {
     font-size: 14px;
 }
 
-.navbar-nav > li > a {
+.navbar-nav > li > a.nav-item {
     line-height: 34px;
 }
 
-    .navbar-nav > li > a:hover {
-        background-color: rgb(33,66,109);
-        color: #fff !important;
-    }
+.navbar-nav > li > a:hover {
+    background-color: rgb(33,66,109);
+    color: #fff !important;
+}
 
 
 
@@ -143,6 +143,42 @@ body {
     background-color: #fff;
 }
 
+figcaption h2 {
+    color: #fff;
+}
+
+figure .buttons > a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.buttons a:hover,
+.buttons a:active {
+    color: #fff;
+}
+
+.btn-register {
+    height: 35px;
+    margin-top: 6px;
+    background: #1b6ec2;
+    border-radius: 5px;
+}
+
+.btn-login {
+    height: 35px;
+    margin-top: 6px;
+    background: #3add38;
+    border-radius: 5px;
+}
+
+    .btn-login:hover {
+        background:#248120 !important;
+    }
+
+.nav-btn {
+    padding-right: 10px;
+}
 
 @media (max-width: 320px) {
     .main-header .logo {
@@ -183,6 +219,20 @@ body {
 
     .main-header .logo {
         right: 50px;
+    }
+
+    .btn-register {
+        height: 35px;
+        margin-top: 6px;
+        background: #fff;
+        color: #5a5c69 !important;
+    }
+
+    .btn-login {
+        height: 35px;
+        margin-top: 6px;
+        background: #fff;
+        color: #5a5c69 !important;
     }
 }
 

@@ -25,7 +25,7 @@ namespace PersianNov.Services
     {
         public PersianNovConnectionHandler()
         {
-            base.ConnectionString = "Data Source=(Local);Initial Catalog=PersianNov;persist security info=True;User ID=sa;Password=123;Max Pool Size=10000;MultipleActiveResultSets=True;";
+            base.ConnectionString = PersianNovComponent.ConnectionString;
         }
 
     }

@@ -170,10 +170,6 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("Name", value); }
         }
 
-        [DisableAction(DisableInsert = true, DisableUpdate = true, DiableSelect = true)]
-        public override string DescriptionField
-        {
-            get { return this.Name; }
-        }
+   
     }
 }
