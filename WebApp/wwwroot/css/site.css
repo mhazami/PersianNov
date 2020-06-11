@@ -180,8 +180,18 @@ figure .buttons > a {
     padding-right: 10px;
 }
 
-@media (max-width: 320px) {
-    .main-header .logo {
+.User-Info {
+    color: #333333;
+    font-size: 14px;
+    margin-left: 100px;
+    padding: 3px !important;
+}
+    .User-Info:hover {
+        color: #333333;
+    }
+
+    @media (max-width: 320px) {
+        .main-header .logo {
         right: 20px !important;
     }
 }
@@ -189,7 +199,9 @@ figure .buttons > a {
 
 
 @media (max-width: 575.98px) {
-
+    .User-Info {
+        margin-left: 0;
+    }
     .navbar-toggler {
         margin-right: 10px;
         padding: .25rem .60rem;

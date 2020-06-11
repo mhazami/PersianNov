@@ -15,3 +15,6 @@ G:\WorkSpace\PersianNov\Services\obj\Debug\netcoreapp3.1\Services.csproj.CopyCom
 G:\WorkSpace\PersianNov\Services\obj\Debug\netcoreapp3.1\PersianNov.Services.dll
 G:\WorkSpace\PersianNov\Services\obj\Debug\netcoreapp3.1\PersianNov.Services.pdb
 G:\WorkSpace\PersianNov\Services\obj\Debug\netcoreapp3.1\Services.csproj.CoreCompileInputs.cache
+G:\WorkSpace\PersianNov\Services\bin\Debug\netcoreapp3.1\Framework.pdb
+G:\WorkSpace\PersianNov\Services\bin\Debug\netcoreapp3.1\Radyn.pdb
+G:\WorkSpace\PersianNov\Services\bin\Debug\netcoreapp3.1\Radyn.Utility.pdb

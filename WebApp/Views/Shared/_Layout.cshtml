@@ -19,50 +19,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <div class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    <a href="#" title="Telegram">
-                        <i class="fa fa-telegram"></i>
-                    </a>
-                    <a class="instagram" title="Instagram" href="#">
-                        <i class="fa fa-instagram"></i>
-                    </a>
-
-                </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse rtl">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link nav-item text-dark" asp-area="" asp-controller="Home" asp-action="Index">صفحه اصلی</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-item text-dark" asp-area="" asp-controller="Home" asp-action="Index">تازه ها</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-item text-dark" asp-area="" asp-controller="Home" asp-action="Index">کتابخانه</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-item text-dark" asp-area="" asp-controller="Home" asp-action="Index">همکاری با ما</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-item text-dark" asp-area="" asp-controller="Home" asp-action="Index">تماس باما</a>
-                        </li>
-
-                        <li class="nav-item nav-btn">
-                            <a class="text-white nav-link btn-register" asp-area="" asp-controller="Home" asp-action="Index">ثبت نام</a>
-                        </li>
-                        <li class="nav-item nav-btn">
-                            <a class="text-white nav-link  btn-login" asp-area="" asp-controller="User" asp-action="Login">ورود</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        @await Component.InvokeAsync("MenuComponent")
         <div class="main-header">
             <img src="~/img/pen.png" class="pen-logo" />
             <img src="~/img/top-logo.png" class="logo" />
@@ -73,7 +30,7 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-         
+
 
             @RenderBody()
 

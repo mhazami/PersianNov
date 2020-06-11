@@ -11,3 +11,6 @@ G:\WorkSpace\PersianNov\DataStructure\obj\Debug\netcoreapp3.1\DataStructure.cspr
 G:\WorkSpace\PersianNov\DataStructure\obj\Debug\netcoreapp3.1\PersianNov.DataStructure.dll
 G:\WorkSpace\PersianNov\DataStructure\obj\Debug\netcoreapp3.1\PersianNov.DataStructure.pdb
 G:\WorkSpace\PersianNov\DataStructure\obj\Debug\netcoreapp3.1\DataStructure.csprojAssemblyReference.cache
+G:\WorkSpace\PersianNov\DataStructure\bin\Debug\netcoreapp3.1\Framework.pdb
+G:\WorkSpace\PersianNov\DataStructure\bin\Debug\netcoreapp3.1\Radyn.pdb
+G:\WorkSpace\PersianNov\DataStructure\bin\Debug\netcoreapp3.1\Radyn.Utility.pdb

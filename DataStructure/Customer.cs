@@ -9,7 +9,7 @@ namespace PersianNov.DataStructure
     [Schema("EnterPrise")]
     public sealed class Customer : DataStructureBase<Customer>
     {
-        public Int32 _id;
+        private Int32 _id;
         [Key(true)]
         [DbType("int")]
         public Int32 Id
@@ -19,7 +19,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public string _firstName;
+        private string _firstName;
         [DbType("nvarchar(50)")]
         public string FirstName
         {
@@ -28,7 +28,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public string _lastName;
+        private string _lastName;
         [DbType("nvarchar(50)")]
         public string LastName
         {
@@ -37,7 +37,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public string _password;
+        private string _password;
         [DbType("nvarchar(50)")]
         public string Password
         {
@@ -46,7 +46,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public string _username;
+        private string _username;
         [DbType("nvarchar(50)")]
         public string Username
         {
@@ -55,7 +55,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public string _email;
+        private string _email;
         [DbType("nvarchar(250)")]
         public string Email
         {
@@ -64,6 +64,9 @@ namespace PersianNov.DataStructure
         }
 
 
-    
+        [DisableAction(DiableAllAction = true)]
+        public string RepeatPassword { get; set; }
+
+
     }
 }

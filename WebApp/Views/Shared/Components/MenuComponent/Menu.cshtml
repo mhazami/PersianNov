@@ -1,0 +1,74 @@
+﻿@using System.Security.Claims;
+@{
+
+    Layout = null;
+}
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <div class="navbar-brand" href="/">
+                <a href="#" title="Telegram">
+                    <i class="fa fa-telegram"></i>
+                </a>
+                <a class="instagram" title="Instagram" href="#">
+                    <i class="fa fa-instagram"></i>
+                </a>
+
+                @if (!string.IsNullOrEmpty((string)ViewBag.User))
+                {
+                    <a class="User-Info" href="#">
+                        @ViewBag.User
+                    </a>
+
+                }
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse rtl">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link nav-item text-dark" href="/">صفحه اصلی</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-item text-dark" href="/">تازه ها</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-item text-dark" href="/">کتابخانه</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-item text-dark" asp-area="" asp-controller="Home" asp-action="Index">همکاری با ما</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-item text-dark" asp-area="" asp-controller="Home" asp-action="Index">تماس باما</a>
+                    </li>
+                    @if (string.IsNullOrEmpty((string)ViewBag.User))
+                    {
+                        <li class="nav-item nav-btn">
+                            <a class="text-white nav-link btn-register" href="/ثبت-نام-مخاطب">ثبت نام</a>
+                        </li>
+                        <li class="nav-item nav-btn">
+                            <a class="text-white nav-link  btn-login" href="/ورود-مخاطب">ورود</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link nav-item text-dark" asp-area="" asp-controller="Customer" asp-action="SignOut">خروج</a>
+                        </li>
+                    }
+
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+</header>
+

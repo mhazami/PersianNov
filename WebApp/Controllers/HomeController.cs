@@ -13,10 +13,9 @@ namespace WebApp.Controllers
 {
     public class HomeController : Controller
     {
-    
         public async Task<IActionResult> Index()
         {
-            var author = User.Identity;
+            var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
             var books = await PersianNovComponent.Instance.BookFacade.GetAllAsync();
             return View(books);
         }
