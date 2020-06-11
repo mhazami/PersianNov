@@ -8,5 +8,6 @@ namespace PersianNov.Services.Interface
 {
     public interface IAuthorFacade : IBaseFacade<Author>
     {
+        Author Login(string username, string password);
     }
 }

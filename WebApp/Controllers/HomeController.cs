@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,9 +14,10 @@ namespace WebApp.Controllers
     public class HomeController : Controller
     {
     
-        public  IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var books =  PersianNovComponent.Instance.BookFacade.GetAll();
+            var author = User.Identity;
+            var books = await PersianNovComponent.Instance.BookFacade.GetAllAsync();
             return View(books);
         }
 
