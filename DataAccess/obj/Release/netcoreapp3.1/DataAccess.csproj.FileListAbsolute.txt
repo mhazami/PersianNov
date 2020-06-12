@@ -13,3 +13,6 @@ G:\WorkSpace\PersianNov\DataAccess\obj\Release\netcoreapp3.1\DataAccess.Assembly
 G:\WorkSpace\PersianNov\DataAccess\obj\Release\netcoreapp3.1\DataAccess.csproj.CopyComplete
 G:\WorkSpace\PersianNov\DataAccess\obj\Release\netcoreapp3.1\PersianNov.DataAccess.dll
 G:\WorkSpace\PersianNov\DataAccess\obj\Release\netcoreapp3.1\PersianNov.DataAccess.pdb
+G:\WorkSpace\PersianNov\DataAccess\bin\Release\netcoreapp3.1\Framework.pdb
+G:\WorkSpace\PersianNov\DataAccess\bin\Release\netcoreapp3.1\Radyn.pdb
+G:\WorkSpace\PersianNov\DataAccess\bin\Release\netcoreapp3.1\Radyn.Utility.pdb

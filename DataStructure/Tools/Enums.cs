@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
-using Radyn.Framework;
 
 namespace PersianNov.DataStructure.Tools
 {
@@ -58,6 +58,23 @@ namespace PersianNov.DataStructure.Tools
             Online = 3,
             [Description("نقدی")]
             Cash = 4
+        }
+
+        public enum Janre : byte
+        {
+            [Description("عاشقانه")]
+            Romantic = 1,
+            [Description("اجتماعی")]
+            Social = 2,
+            [Description("معمایی")]
+            Puzzle = 3,
+            [Description("ترسناک")]
+            Scary = 4,
+            [Description("طنز")]
+            Humor = 5,
+            [Description("شعر")]
+            Poetry = 6,
+
         }
 
 

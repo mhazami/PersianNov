@@ -28,7 +28,7 @@ namespace WebApp.Controllers
 
         public async Task<IActionResult> Login(string username, string password)
         {
-            Author author = PersianNovComponent.Instance.AuthorFacade.Login(username, password);
+            Author author =await PersianNovComponent.Instance.AuthorFacade.Login(username, password);
             if (author != null)
             {
                 var claims = new List<Claim>

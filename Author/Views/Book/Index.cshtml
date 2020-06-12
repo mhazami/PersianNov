@@ -1,0 +1,85 @@
+﻿@model IEnumerable<PersianNov.DataStructure.Book>
+@{
+    ViewData["Title"] = "لیست کتاب ها";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">مدیریت کتاب</h1>
+        @*<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>*@
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            @*<h6 class="m-0 d-inline font-weight-bold text-primary">
+                لیست کتاب های شما
+            </h6>*@
+            <div class="mr-1 d-inline">
+                <a asp-area="" asp-action="Create" asp-controller="Book" class="btn btn-primary text-white">ثبت کتاب جدید</a>
+            </div>
+        </div>
+        <div class="card-body">
+            @if (Model.Count() > 0)
+            {
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>عنوان</th>
+                                <th>قیمت</th>
+                                <th>تعداد صفحه</th>
+                                <th>تاریخ نشر</th>
+                                <th>پارت ها</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>عنوان</th>
+                                <th>قیمت</th>
+                                <th>تعداد صفحه</th>
+                                <th>تاریخ نشر</th>
+                                <th>تخفیف</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @{
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.Price.ToString("N0")</td>
+                                <td>@item.PageCount</td>
+                                <td>@item.PublishDate</td>
+                                <td>@item.Discount %</td>
+
+                                <td>
+                                    <a class="btn btn-warning btn-sm">پارت</a>
+                                    <a class="btn btn-warning btn-sm">جزئیات</a>
+                                    <a class="btn btn-warning btn-sm">ویرایش</a>
+                                    <a class="btn btn-warning btn-sm">حذف</a>
+                                </td>
+                            </tr>
+                            }
+                        }
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="text-center">
+                    در حال حاضر شما کتابی ثبت نکرده اید
+                </div>
+            }
+
+        </div>
+    </div>
+
+</div>

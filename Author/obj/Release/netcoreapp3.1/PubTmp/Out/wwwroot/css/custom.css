@@ -1,0 +1,52 @@
+﻿@font-face {
+    font-family: 'tanha';
+    src: url('/fonts/tanha/Tanha-FD.eot');
+    src: url('/fonts/tanha/Tanha-FD.eot?#iefix') format('FontName-opentype'), url('/fonts/tanha/Tanha-FD.woff') format('woff'), url('/fonts/tanha/Tanha-FD.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.rotate-n-15 {
+    transform: rotate(0);
+}
+
+
+#page-top {
+    direction: rtl;
+    font-family: tanha;
+}
+
+.navbar {
+    direction: ltr;
+}
+
+.navbar-nav {
+    padding-right: 0;
+}
+
+.sidebar .sidebar-heading {
+    text-align: right;
+}
+
+.seach-input {
+    text-align: right;
+}
+
+.dropdown-menu {
+    direction: rtl;
+}
+
+    .dropdown-menu > a {
+        text-align: right;
+    }
+
+
+.sidebar .nav-item .nav-link {
+    text-align: right;
+}
+
+    .sidebar .nav-item .nav-link[data-toggle=collapse].collapsed::before {
+        content: '\f105';
+        font-family: 'Font Awesome 5 Free';
+    }

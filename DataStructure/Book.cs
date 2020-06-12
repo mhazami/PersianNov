@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Radyn.Framework;
+using static PersianNov.DataStructure.Tools.Enums;
 
 namespace PersianNov.DataStructure
 {
@@ -9,7 +10,16 @@ namespace PersianNov.DataStructure
     [Schema("Book")]
     public sealed class Book : DataStructureBase<Book>
     {
-        public Int32 _id;
+        public Book()
+        {
+            Enabled = false;
+            Price = 0;
+            Finished = false;
+            Percent = 20;
+            Discount = 0;
+            FreeStydy = false;
+        }
+        private Int32 _id;
         [Key(true)]
         [DbType("int")]
         public Int32 Id
@@ -18,7 +28,7 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("Id", value); }
         }
 
-        public Int32? _authorId;
+        private Int32? _authorId;
         [DbType("int")]
         public Int32? AuthorId
         {
@@ -29,7 +39,7 @@ namespace PersianNov.DataStructure
         public Author Author { get; set; }
 
 
-        public Int32? _publisherId;
+        private Int32? _publisherId;
         [DbType("int")]
         public Int32? PublisherId
         {
@@ -39,7 +49,7 @@ namespace PersianNov.DataStructure
         [Assosiation(PropName = "PublisherId")]
         public Publisher Publisher { get; set; }
 
-        public string _publisherName;
+        private string _publisherName;
         [DbType("nvarchar(100)")]
         public string PublisherName
         {
@@ -47,7 +57,7 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("PublisherName", value); }
         }
 
-        public decimal _price;
+        private decimal _price;
         [DbType("decimal(8,3)")]
         public decimal Price
         {
@@ -55,7 +65,7 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("Price", value); }
         }
 
-        public int _discount;
+        private int _discount;
         [DbType("int")]
         public int Discount
         {
@@ -64,7 +74,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public string _publishDate;
+        private string _publishDate;
         [DbType("varchar(10)")]
         public string PublishDate
         {
@@ -73,7 +83,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public int _pageCount;
+        private int _pageCount;
         [DbType("int")]
         public int PageCount
         {
@@ -81,7 +91,7 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("PageCount", value); }
         }
 
-        public string _abstract;
+        private string _abstract;
         [DbType("nvarchar(Max)")]
         public string Abstract
         {
@@ -89,7 +99,7 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("Abstract", value); }
         }
 
-        public int _percent;
+        private int _percent;
         [DbType("int")]
         public int Percent
         {
@@ -98,7 +108,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public string _subject;
+        private string _subject;
         [DbType("nvarchar(Max)")]
         public string Subject
         {
@@ -107,15 +117,15 @@ namespace PersianNov.DataStructure
         }
 
 
-        public string _janre;
-        [DbType("nvarchar(50)")]
-        public string Janre
+        private Janre _janre;
+        [DbType("tinyint")]
+        public Janre Janre
         {
             get { return _janre; }
             set { base.SetPropertyValue("Janre", value); }
         }
 
-        public bool _finished;
+        private bool _finished;
         [DbType("bit")]
         public bool Finished
         {
@@ -123,7 +133,7 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("Finished", value); }
         }
 
-        public bool _enabled;
+        private bool _enabled;
         [DbType("bit")]
         public bool Enabled
         {
@@ -131,7 +141,7 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("Enabled", value); }
         }
 
-        public bool _freeStydy;
+        private bool _freeStydy;
         [DbType("bit")]
         public bool FreeStydy
         {
@@ -139,8 +149,16 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("FreeStydy", value); }
         }
 
+        private bool _show;
+        [DbType("bit")]
+        public bool Show
+        {
+            get { return _show; }
+            set { base.SetPropertyValue("Show", value); }
+        }
 
-        public Guid? _pDF;
+
+        private Guid? _pDF;
         [DbType("uniqueidentifier")]
         public Guid? PDF
         {
@@ -151,7 +169,7 @@ namespace PersianNov.DataStructure
         public File PdfFile { get; set; }
 
 
-        public Guid? _image;
+        private Guid? _image;
         [DbType("uniqueidentifier")]
         public Guid? Image
         {
@@ -162,7 +180,7 @@ namespace PersianNov.DataStructure
         public File ImageFile { get; set; }
 
 
-        public string _name;
+        private string _name;
         [DbType("nvarchar(100)")]
         public string Name
         {
@@ -170,6 +188,6 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("Name", value); }
         }
 
-   
+
     }
 }

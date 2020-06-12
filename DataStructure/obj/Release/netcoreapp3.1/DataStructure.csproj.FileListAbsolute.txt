@@ -11,3 +11,6 @@ G:\WorkSpace\PersianNov\DataStructure\obj\Release\netcoreapp3.1\DataStructure.As
 G:\WorkSpace\PersianNov\DataStructure\obj\Release\netcoreapp3.1\DataStructure.csproj.CopyComplete
 G:\WorkSpace\PersianNov\DataStructure\obj\Release\netcoreapp3.1\PersianNov.DataStructure.dll
 G:\WorkSpace\PersianNov\DataStructure\obj\Release\netcoreapp3.1\PersianNov.DataStructure.pdb
+G:\WorkSpace\PersianNov\DataStructure\bin\Release\netcoreapp3.1\Framework.pdb
+G:\WorkSpace\PersianNov\DataStructure\bin\Release\netcoreapp3.1\Radyn.pdb
+G:\WorkSpace\PersianNov\DataStructure\bin\Release\netcoreapp3.1\Radyn.Utility.pdb

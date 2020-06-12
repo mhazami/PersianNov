@@ -10,7 +10,14 @@ namespace PersianNov.DataStructure
     [Schema("EnterPrise")]
     public sealed class Author : DataStructureBase<Author>
     {
-        public Int32 _id;
+        public Author()
+        {
+            Enabled = false;
+            EnabledShow = false;
+            RegisterStatus = RegisterStatus.Prossecing;
+        }
+
+        private Int32 _id;
         [Key(true)]
         [DbType("int")]
         public Int32 Id
@@ -20,7 +27,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public string _firstName;
+        private string _firstName;
         [DbType("nvarchar(50)")]
         public string FirstName
         {
@@ -29,7 +36,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public string _lastName;
+        private string _lastName;
         [DbType("nvarchar(50)")]
         public string LastName
         {
@@ -38,7 +45,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public string _password;
+        private string _password;
         [DbType("nvarchar(50)")]
         public string Password
         {
@@ -47,7 +54,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public string _username;
+        private string _username;
         [DbType("nvarchar(50)")]
         public string Username
         {
@@ -56,7 +63,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public string _email;
+        private string _email;
         [DbType("nvarchar(250)")]
         public string Email
         {
@@ -64,7 +71,7 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("Email", value); }
         }
 
-        public string _phone;
+        private string _phone;
         [DbType("varchar(11)")]
         public string Phone
         {
@@ -73,7 +80,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public string _website;
+        private string _website;
         [DbType("nvarchar(250)")]
         public string Website
         {
@@ -81,7 +88,7 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("Website", value); }
         }
 
-        public bool _enabled;
+        private bool _enabled;
         [DbType("bit")]
         public bool Enabled
         {
@@ -89,7 +96,7 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("Enabled", value); }
         }
 
-        public RegisterStatus _registerStatus;
+        private RegisterStatus _registerStatus;
         [DbType("tinyint")]
         public RegisterStatus RegisterStatus
         {
@@ -97,7 +104,7 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("RegisterStatus", value); }
         }
 
-        public bool _enabledShow;
+        private bool _enabledShow;
         [DbType("bit")]
         public bool EnabledShow
         {
@@ -105,10 +112,11 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("EnabledShow", value); }
         }
 
+        [DisableAction(DiableAllAction = true)]
+        public string RepeatPassword { get; set; }
 
-        
 
 
-  
+
     }
 }

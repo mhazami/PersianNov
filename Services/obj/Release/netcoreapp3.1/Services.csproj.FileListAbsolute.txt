@@ -15,3 +15,6 @@ G:\WorkSpace\PersianNov\Services\obj\Release\netcoreapp3.1\Services.AssemblyInfo
 G:\WorkSpace\PersianNov\Services\obj\Release\netcoreapp3.1\Services.csproj.CopyComplete
 G:\WorkSpace\PersianNov\Services\obj\Release\netcoreapp3.1\PersianNov.Services.dll
 G:\WorkSpace\PersianNov\Services\obj\Release\netcoreapp3.1\PersianNov.Services.pdb
+G:\WorkSpace\PersianNov\Services\bin\Release\netcoreapp3.1\Framework.pdb
+G:\WorkSpace\PersianNov\Services\bin\Release\netcoreapp3.1\Radyn.pdb
+G:\WorkSpace\PersianNov\Services\bin\Release\netcoreapp3.1\Radyn.Utility.pdb

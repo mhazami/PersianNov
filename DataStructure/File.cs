@@ -26,7 +26,8 @@ namespace PersianNov.DataStructure
         [DbType("varbinary(max)")]
         public byte[] Content { get; set; }
 
-
+        [DbType("int")]
+        public int Size { get; set; }
 
         [DisableAction(DisableInsert = true, DisableUpdate = true, DiableSelect = true)]
         public long MaxSize { get; set; }

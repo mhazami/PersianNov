@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "JWOJc2RsN/U+6WZ8gD5gtGU6zkRRLgmkJv1pI7tKzbr6/rjAQM7Xgo3nDEdtX3sn11VFFZ5dQkVF1vC1UxmXcQ==",
+  "dgSpecHash": "CTXZ9OUIEZaBf0GyDHLU0s94Jyy/a+BhFpgzsrZ90QqFqwwX0tWYU8IoFiUlob+xN2nGZJOqjbqsyKfYo0bGtA==",
   "success": true,
   "projectFilePath": "G:\\WorkSpace\\PersianNov\\Services\\Services.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\mohammad\\.nuget\\packages\\microsoft.aspnetcore.http.features\\3.1.5\\microsoft.aspnetcore.http.features.3.1.5.nupkg.sha512",
     "C:\\Users\\mohammad\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.5\\microsoft.extensions.configuration.3.1.5.nupkg.sha512",
     "C:\\Users\\mohammad\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.1.5\\microsoft.extensions.configuration.abstractions.3.1.5.nupkg.sha512",
-    "C:\\Users\\mohammad\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.5\\microsoft.extensions.primitives.3.1.5.nupkg.sha512"
+    "C:\\Users\\mohammad\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.5\\microsoft.extensions.primitives.3.1.5.nupkg.sha512",
+    "C:\\Users\\mohammad\\.nuget\\packages\\system.io.pipelines\\4.7.1\\system.io.pipelines.4.7.1.nupkg.sha512"
   ],
   "logs": []
 }

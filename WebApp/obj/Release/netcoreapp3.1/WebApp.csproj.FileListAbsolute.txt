@@ -43,7 +43,6 @@ G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\refs\Microsoft.AspNetCo
 G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\refs\Microsoft.AspNetCore.Http.Connections.dll
 G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\refs\Microsoft.AspNetCore.Http.dll
 G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\refs\Microsoft.AspNetCore.Http.Extensions.dll
-G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\refs\Microsoft.AspNetCore.Http.Features.dll
 G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\refs\Microsoft.AspNetCore.HttpOverrides.dll
 G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\refs\Microsoft.AspNetCore.HttpsPolicy.dll
 G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\refs\Microsoft.AspNetCore.Identity.dll
@@ -182,7 +181,6 @@ G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\refs\System.IO.FileSyst
 G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\refs\System.IO.FileSystem.Watcher.dll
 G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\refs\System.IO.IsolatedStorage.dll
 G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\refs\System.IO.MemoryMappedFiles.dll
-G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\refs\System.IO.Pipelines.dll
 G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\refs\System.IO.Pipes.dll
 G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\refs\System.IO.UnmanagedMemoryStream.dll
 G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\refs\System.Linq.dll
@@ -415,3 +413,13 @@ G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\runtimes\win\lib\netcor
 G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 G:\WorkSpace\PersianNov\WebApp\obj\Release\netcoreapp3.1\Razor\Views\Shared\_LoginLayout.cshtml.g.cs
 G:\WorkSpace\PersianNov\WebApp\obj\Release\netcoreapp3.1\Razor\Views\User\Login.cshtml.g.cs
+G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\Framework.pdb
+G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\Radyn.pdb
+G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\Radyn.Utility.pdb
+G:\WorkSpace\PersianNov\WebApp\obj\Release\netcoreapp3.1\Razor\Views\Customer\Index.cshtml.g.cs
+G:\WorkSpace\PersianNov\WebApp\obj\Release\netcoreapp3.1\Razor\Views\Customer\Login.cshtml.g.cs
+G:\WorkSpace\PersianNov\WebApp\obj\Release\netcoreapp3.1\Razor\Views\Customer\Register.cshtml.g.cs
+G:\WorkSpace\PersianNov\WebApp\obj\Release\netcoreapp3.1\Razor\Views\Shared\Components\MenuComponent\Menu.cshtml.g.cs
+G:\WorkSpace\PersianNov\WebApp\obj\Release\netcoreapp3.1\Razor\Views\Home\Cooperation.cshtml.g.cs
+G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
+G:\WorkSpace\PersianNov\WebApp\bin\Release\netcoreapp3.1\System.IO.Pipelines.dll

@@ -98,7 +98,7 @@ namespace WebApp.Controllers
                      new Claim(ClaimTypes.Name, $"{customer.FirstName} {customer.LastName}"),
                      new Claim(ClaimTypes.Email,customer.Email),
                      new Claim("Id",customer.Id.ToString()),
-                     new Claim(ClaimTypes.Role, "Author"),
+                     new Claim(ClaimTypes.Role, "Customer"),
                 };
 
 

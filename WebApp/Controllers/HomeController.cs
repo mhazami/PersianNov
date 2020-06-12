@@ -20,6 +20,12 @@ namespace WebApp.Controllers
             return View(books);
         }
 
+        [Route("/همکاری-با-رمان-فارسی")]
+        public IActionResult Cooperation()
+        {
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
