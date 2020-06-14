@@ -62,6 +62,22 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("PublishDate", value); }
         }
 
+        private bool _approve;
+        [DbType("bit")]
+        public bool Approve
+        {
+            get { return _approve; }
+            set { base.SetPropertyValue("Approve", value); }
+        }
+
+        private bool _vIP;
+        [DbType("bit")]
+        public bool VIP
+        {
+            get { return _vIP; }
+            set { base.SetPropertyValue("VIP", value); }
+        }
+
         public bool _enabled;
         [DbType("bit")]
         public bool Enabled
