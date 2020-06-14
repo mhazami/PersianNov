@@ -55,26 +55,72 @@ namespace Author.Controllers
         }
 
 
-        public async Task<IActionResult> Edit(Guid id)
+        public IActionResult Edit(Guid id)
         {
             var authorId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "Id")?.Value;
             if (PersianNovComponent.Instance.AuthorFacade.CheckBookOwner(authorId.ToGuid(), id))
             {
-                var book = await PersianNovComponent.Instance.BookFacade.GetAsync(id);
+                var book = PersianNovComponent.Instance.BookFacade.Get(id);
                 return View(book);
             }
             else
             {
                 return RedirectToAction("AccessDenied");
             }
-           
+
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> Edit()
-        //{
+        [HttpPost]
+        public IActionResult Edit(Book book, IFormFile pdf, IFormFile image)
+        {
+            try
+            {
+                var old = PersianNovComponent.Instance.BookFacade.FirstOrDefault(x => x.Id == book.Id);
+                if (old != null)
+                {
+                    if (!PersianNovComponent.Instance.BookFacade.Update(book, pdf, image))
+                        throw new Exception("خطایی در ویرایش اطلاعات کتاب رخ داده است");
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.InnerException.Message;
+                return View(book);
+            }
+        }
 
-        //}
+        public IActionResult Delete(Guid id)
+        {
+            var authorId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "Id")?.Value;
+            if (PersianNovComponent.Instance.AuthorFacade.CheckBookOwner(authorId.ToGuid(), id))
+            {
+                var book = PersianNovComponent.Instance.BookFacade.Get(id);
+                return View(book);
+            }
+            else
+            {
+                return RedirectToAction("AccessDenied");
+            }
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public IActionResult DeleteBook(Book book)
+        {
+            try
+            {
+                if (!PersianNovComponent.Instance.BookFacade.Delete(book.Id))
+                    throw new Exception("خطایی در حذف اطلاعات کتاب رخ داده است");
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.InnerException.Message;
+                return View(book);
+            }
+        }
+
 
         public IActionResult AccessDenied()
         {

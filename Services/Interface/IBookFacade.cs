@@ -11,5 +11,9 @@ namespace PersianNov.Services.Interface
     public interface IBookFacade : IBaseFacade<Book>
     {
         bool Insert(Book book, IFormFile image,IFormFile pdf);
+
+        bool Update(Book book, IFormFile image, IFormFile pdf);
+
+        bool Delete(Guid id);
     }
 }

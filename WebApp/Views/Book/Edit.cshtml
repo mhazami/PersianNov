@@ -1,0 +1,115 @@
+﻿@model PersianNov.DataStructure.Book
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AuthorLayout.cshtml";
+}
+
+    <div class="container-fluid">
+        @*@if (!string.IsNullOrEmpty(ViewBag.Message))
+        {*@
+            <div class="alert alert-danger">
+                @ViewBag.Message
+            </div>
+       @* }*@
+        <form method="post" enctype="multipart/form-data" action="/Book/Edit">
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustom01">عنوان</label>
+                    <input type="text" class="form-control" asp-for="Name" name="Name" />
+
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustom02">نام ناشر </label>
+                    <input type="text" class="form-control" asp-for="PublisherName" name="PublisherName" id="PublisherName" />
+
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustom03">قیمت</label>
+                    <input type="number" class="form-control" name="Price" asp-for="Price" id="Price">
+
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustom03">تخفیف (درصد)</label>
+                    <input type="number" class="form-control" asp-for="Discount" name="Discount" id="Discount">
+
+                </div>
+
+
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustom04">ژانر</label>
+                    <select class="custom-select" name="Janre" asp-for="Janre" id="Janre" asp-items="(SelectList)ViewBag.Janre">
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a valid state.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustom03">تعداد صفحات</label>
+                    <input type="number" class="form-control" asp-for="PageCount" name="PageCount" id="PageCount">
+
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <label for="exampleFormControlTextarea1">موضوع </label>
+                    <textarea class="form-control" name="Subject" asp-for="Subject" id="Subject" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <label for="exampleFormControlTextarea1">چکیده </label>
+                    <textarea class="form-control" id="Abstract" asp-for="Abstract" name="Abstract" rows="5"></textarea>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustom04">تصویر کتاب</label>
+                    <input type="file" class="form-control" name="image" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustom04">فایل PDF</label>
+
+                    <input type="file" class="form-control" id="inputGroupFile01" name="pdf" aria-describedby="inputGroupFileAddon01">
+
+
+                </div>
+            </div>
+
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="FreeStydy">پایان یافته است ؟</label>
+                    <input type="radio" asp-for="Finished" value="true" name="Finished" id="Finished">بله
+                    <input type="radio" asp-for="Finished" value="false" name="Finished" id="Finished">خیر
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="FreeStydy">مطالعه برای عموم آزاد است ؟ </label>
+                    <input type="radio" asp-for="FreeStydy" value="true" name="FreeStydy" id="FreeStydy">بله
+                    <input type="radio" asp-for="FreeStydy" value="false" name="FreeStydy" id="FreeStydy">خیر
+
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+
+                    <label for="FreeStydy">نمایش داده شود ؟ </label>
+                    <input type="radio" asp-for="Show" value="true" name="Show" id="Show">بله
+                    <input type="radio" asp-for="Show" value="false" name="Show" id="Show">خیر
+                </div>
+            </div>
+
+
+
+            <button class="btn btn-primary" type="submit">ثبت</button>
+        </form>
+
+    </div>

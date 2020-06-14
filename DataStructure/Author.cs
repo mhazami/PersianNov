@@ -19,7 +19,7 @@ namespace PersianNov.DataStructure
 
         private Guid _id;
         [Key(false)]
-        [DbType("int")]
+        [DbType("uniqueidentifier")]
         public Guid Id
         {
             get { return _id; }

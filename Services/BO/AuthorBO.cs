@@ -11,6 +11,13 @@ namespace PersianNov.Services.BO
 {
     public sealed class AuthorBO : BusinessBase<Author>
     {
+        public override bool Insert(IConnectionHandler connectionHandler, Author obj)
+        {
+            var id = obj.Id;
+            BOUtility.GetGuidForId(ref id);
+            obj.Id = id;
+            return base.Insert(connectionHandler, obj);
+        }
         protected override void CheckConstraint(IConnectionHandler connectionHandler, Author item)
         {
             if (string.IsNullOrEmpty(item.Email))
@@ -33,6 +40,9 @@ namespace PersianNov.Services.BO
 
         public override Task<bool> InsertAsync(IConnectionHandler connectionHandler, Author obj)
         {
+            var id = obj.Id;
+            BOUtility.GetGuidForId(ref id);
+            obj.Id = id;
             var exist = base.Any(connectionHandler, x => x.Email.ToLower() == obj.Email.ToLower());
             if (exist)
                 throw new Exception("کابر دیگری با این ایمیل در سیستم موجود میباشد ");
