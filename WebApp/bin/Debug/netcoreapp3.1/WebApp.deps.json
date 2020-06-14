@@ -1791,7 +1791,8 @@
       },
       "PersianNov.DataAccess/1.0.0": {
         "dependencies": {
-          "PersianNov.DataStructure": "1.0.0"
+          "PersianNov.DataStructure": "1.0.0",
+          "System.Data.SqlClient": "4.8.1"
         },
         "runtime": {
           "PersianNov.DataAccess.dll": {}

@@ -13,58 +13,30 @@ namespace PersianNov.Services.Facade
 {
     public sealed class BookFacade : PersianNovBaseFacade<Book>, IBookFacade
     {
-        public async Task<bool> InsertAsync(Book book, IFormFile image,IFormFile pdf)
+        public bool Insert(Book book, IFormFile image, IFormFile pdf)
         {
             base.ConnectionHandler.StartTransaction(IsolationLevel.ReadUncommitted);
             try
             {
                 if (image != null)
                 {
-                    using (var ms = new MemoryStream())
-                    {
-                        image.CopyTo(ms);
-                        var file = new DataStructure.File()
-                        {
-                            FileName = image.FileName,
-                            Extension = Path.GetExtension(image.FileName),
-                            ContentType = image.ContentType,
-                            Content = ms.ToArray(),
-                            Size = ms.ToArray().Length / 1024
-                        };
-
-                        book.ImageFile = file;
-                    }
-
-                    if (!await new FileBO().InsertAsync(base.ConnectionHandler, book.ImageFile))
+                    var imageId = new FileBO().Insert(base.ConnectionHandler, image, book.ImageFile);
+                    if (imageId == null && imageId == Guid.Empty)
                     {
                         throw new Exception("خطایی در درج اطلاعات کتاب رخ داده است");
                     }
-                    book.Image = book.ImageFile.Id;
+                    book.Image = imageId;
                 }
                 if (pdf != null)
                 {
-                    using (var ms = new MemoryStream())
-                    {
-                        pdf.CopyTo(ms);
-                        var file = new DataStructure.File()
-                        {
-                            FileName = pdf.FileName,
-                            Extension = Path.GetExtension(pdf.FileName),
-                            ContentType = pdf.ContentType,
-                            Content = ms.ToArray(),
-                            Size = ms.ToArray().Length / 1024
-                        };
-
-                        book.PdfFile = file;
-                    }
-
-                    if (!await new FileBO().InsertAsync(base.ConnectionHandler, book.PdfFile))
+                    var pdfId = new FileBO().Insert(base.ConnectionHandler, pdf, book.PdfFile);
+                    if (pdfId == null && pdfId == Guid.Empty)
                     {
                         throw new Exception("خطایی در درج اطلاعات کتاب رخ داده است");
                     }
-                    book.PDF = book.PdfFile.Id;
+                    book.PDF = pdfId;
                 }
-                if (!await new BookBO().InsertAsync(base.ConnectionHandler, book))
+                if (!new BookBO().Insert(base.ConnectionHandler, book))
                 {
                     throw new Exception("خطایی در درج اطلاعات کتاب رخ داده است");
                 }

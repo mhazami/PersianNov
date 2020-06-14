@@ -34,14 +34,14 @@ namespace Author.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Book book, IFormFile image, IFormFile pdf)
+        public IActionResult Create(Book book, IFormFile image, IFormFile pdf)
         {
             try
             {
                 var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "Id")?.Value;
                 book.AuthorId = userId.ToInt();
                 book.PublishDate = DateTime.Now.ShamsiDate();
-                if (!await PersianNovComponent.Instance.BookFacade.InsertAsync(book, image, pdf))
+                if (!PersianNovComponent.Instance.BookFacade.Insert(book, image, pdf))
                     throw new Exception("خطایی در درج اطلاعات کتاب رخ داده است");
                 return RedirectToAction("Index");
             }

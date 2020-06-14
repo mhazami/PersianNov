@@ -10,6 +10,6 @@ namespace PersianNov.Services.Interface
 {
     public interface IBookFacade : IBaseFacade<Book>
     {
-        Task<bool> InsertAsync(Book book, IFormFile image,IFormFile pdf);
+        bool Insert(Book book, IFormFile image,IFormFile pdf);
     }
 }

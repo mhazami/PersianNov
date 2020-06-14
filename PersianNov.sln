@@ -18,8 +18,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{CFF2A8FA-3DCB-47CB-83E7-249E16AE37CC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Author", "Author\Author.csproj", "{37F9F247-D3DC-4953-B2C8-DD81E2AF919D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{CA60DA48-0F99-44CC-9F5B-1DD150F367C8}"
 EndProject
 Global
@@ -44,10 +42,6 @@ Global
 		{CFF2A8FA-3DCB-47CB-83E7-249E16AE37CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFF2A8FA-3DCB-47CB-83E7-249E16AE37CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFF2A8FA-3DCB-47CB-83E7-249E16AE37CC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{37F9F247-D3DC-4953-B2C8-DD81E2AF919D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{37F9F247-D3DC-4953-B2C8-DD81E2AF919D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{37F9F247-D3DC-4953-B2C8-DD81E2AF919D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{37F9F247-D3DC-4953-B2C8-DD81E2AF919D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

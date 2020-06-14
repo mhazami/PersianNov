@@ -2131,7 +2131,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "PersianNov.DataStructure": "1.0.0"
+          "PersianNov.DataStructure": "1.0.0",
+          "System.Data.SqlClient": "4.8.1"
         },
         "compile": {
           "bin/placeholder/PersianNov.DataAccess.dll": {}
