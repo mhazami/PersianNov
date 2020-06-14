@@ -19,6 +19,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{CFF2A8FA-3DCB-47CB-83E7-249E16AE37CC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{CA60DA48-0F99-44CC-9F5B-1DD150F367C8}"
+	ProjectSection(SolutionItems) = preProject
+		Scripts\20200612.sql = Scripts\20200612.sql
+		Scripts\20200614.sql = Scripts\20200614.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

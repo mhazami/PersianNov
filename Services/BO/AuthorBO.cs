@@ -28,6 +28,9 @@ namespace PersianNov.Services.BO
 
         public override Task<bool> InsertAsync(IConnectionHandler connectionHandler, Author obj)
         {
+            var exist = base.Any(connectionHandler, x => x.Email.ToLower() == obj.Email.ToLower());
+            if (exist)
+                throw new Exception("کابر دیگری با این ایمیل در سیستم موجود میباشد ");
             if (obj.Password != obj.RepeatPassword)
                 throw new Exception("رمز عبور و تکرار آن مطابقت ندارند");
             obj.Password = StringUtils.HashPassword(obj.Password);

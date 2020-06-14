@@ -85,7 +85,7 @@ namespace Author.Controllers
             }
             catch (Exception ex)
             {
-                ViewBag.Message = ex.Message;
+                ViewBag.Message = ex.InnerException.Message;
                 return View(author);
             }
         }
