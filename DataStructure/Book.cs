@@ -58,7 +58,7 @@ namespace PersianNov.DataStructure
         }
 
         private decimal _price;
-        [DbType("decimal(8,3)")]
+        [DbType("decimal")]
         public decimal Price
         {
             get { return _price; }
