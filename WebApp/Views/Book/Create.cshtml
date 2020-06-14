@@ -1,6 +1,6 @@
 ﻿@model PersianNov.DataStructure.Book
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "ثبت کتاب";
     Layout = "~/Views/Shared/_AuthorLayout.cshtml";
 }
 
@@ -68,7 +68,7 @@
             </div>
             <div class="col-md-6 mb-3">
                 <label for="validationCustom04">فایل PDF</label>
-
+                
                 <input type="file" class="form-control" id="inputGroupFile01" name="pdf" aria-describedby="inputGroupFileAddon01">
 
 
@@ -83,7 +83,7 @@
                 <input type="radio" value="true" name="Finished" id="Finished">بله
                 <input type="radio" value="false" name="Finished" id="Finished">خیر
             </div>
-       
+
             <div class="col-md-6 mb-3">
                 <label for="FreeStydy">مطالعه برای عموم آزاد است ؟ </label>
                 <input type="radio" value="true" name="FreeStydy" id="FreeStydy">بله
@@ -95,7 +95,7 @@
 
         <div class="form-row">
             <div class="col-md-6 mb-3">
-              
+
                 <label for="FreeStydy">نمایش داده شود ؟ </label>
                 <input type="radio" value="true" name="Show" id="Show">بله
                 <input type="radio" value="false" name="Show" id="Show">خیر
@@ -105,6 +105,8 @@
 
 
         <button class="btn btn-primary" type="submit">ثبت</button>
+        <a class="btn btn-warning" asp-action="Index">بازگشت</a>
+
     </form>
 
 </div>

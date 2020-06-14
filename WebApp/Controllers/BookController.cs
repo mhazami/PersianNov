@@ -76,9 +76,15 @@ namespace Author.Controllers
             try
             {
                 var old = PersianNovComponent.Instance.BookFacade.FirstOrDefault(x => x.Id == book.Id);
+                book.Image = old.Image;
+                book.PDF = old.PDF;
+                book.PublishDate = old.PublishDate;
+                book.AuthorId = old.AuthorId;
+                book.Id = old.Id;
+                book.Enabled = old.Enabled;
                 if (old != null)
                 {
-                    if (!PersianNovComponent.Instance.BookFacade.Update(book, pdf, image))
+                    if (!PersianNovComponent.Instance.BookFacade.Update(book, image, pdf))
                         throw new Exception("خطایی در ویرایش اطلاعات کتاب رخ داده است");
                 }
                 return RedirectToAction("Index");
@@ -119,6 +125,13 @@ namespace Author.Controllers
                 ViewBag.Message = ex.InnerException.Message;
                 return View(book);
             }
+        }
+
+
+        public IActionResult Details(Guid id)
+        {
+            var book = PersianNovComponent.Instance.BookFacade.Get(id);
+            return View(book);
         }
 
 

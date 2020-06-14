@@ -31,6 +31,8 @@ namespace PersianNov.Services.Facade
                 }
                 if (pdf != null)
                 {
+                    if (Path.GetExtension(pdf.FileName).ToLower() != "pdf")
+                        throw new Exception("فایل بارگزاری شده برای کتاب باید با پسوند pdf باشد");
                     var pdfId = new FileBO().Insert(base.ConnectionHandler, pdf, book.PdfFile);
                     if (pdfId == null && pdfId == Guid.Empty)
                     {
@@ -61,7 +63,8 @@ namespace PersianNov.Services.Facade
             {
                 if (image != null)
                 {
-                    if (!fileBO.Delete(base.ConnectionHandler, book.Image))
+                    if (book.Image != null)
+                        if (!fileBO.Delete(base.ConnectionHandler, book.Image))
                         throw new Exception("خطایی در درج اطلاعات کتاب رخ داده است");
                     var imageId = fileBO.Insert(base.ConnectionHandler, image, book.ImageFile);
                     if (imageId == null && imageId == Guid.Empty)
@@ -71,8 +74,12 @@ namespace PersianNov.Services.Facade
                 }
                 if (pdf != null)
                 {
-                    if (!fileBO.Delete(base.ConnectionHandler, book.Image))
-                        throw new Exception("خطایی در درج اطلاعات کتاب رخ داده است");
+                    var exte = Path.GetExtension(pdf.FileName).ToLower();
+                    if (Path.GetExtension(pdf.FileName).ToLower() != ".pdf")
+                        throw new Exception("فایل بارگزاری شده برای کتاب باید با پسوند pdf باشد");
+                    if (book.PDF != null)
+                        if (!fileBO.Delete(base.ConnectionHandler, book.PDF))
+                            throw new Exception("خطایی در درج اطلاعات کتاب رخ داده است");
                     var pdfId = fileBO.Insert(base.ConnectionHandler, pdf, book.PdfFile);
                     if (pdfId == null && pdfId == Guid.Empty)
                     {
