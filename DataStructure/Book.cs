@@ -13,7 +13,6 @@ namespace PersianNov.DataStructure
         public Book()
         {
             Enabled = false;
-            Price = 0;
             Finished = false;
             Percent = 20;
             Discount = 0;
@@ -56,10 +55,11 @@ namespace PersianNov.DataStructure
             get { return _publisherName; }
             set { base.SetPropertyValue("PublisherName", value); }
         }
-
-        private decimal _price;
+        
+        private decimal? _price;
+        [IsNullable]
         [DbType("decimal")]
-        public decimal Price
+        public decimal? Price
         {
             get { return _price; }
             set { base.SetPropertyValue("Price", value); }
