@@ -1,0 +1,122 @@
+﻿@using Radyn.Utility;
+@using PersianNov.DataStructure.Tools;
+@model PersianNov.DataStructure.Book
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AuthorLayout.cshtml";
+}
+
+
+<div class="container-fluid">
+    @if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Message
+        </div>
+    }
+    <form method="post" enctype="multipart/form-data" action="/Book/Edit">
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">عنوان</label>
+                <label type="text" class="form-control" asp-for="Name" name="Name"></label>
+
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom02">نام ناشر </label>
+                <label type="text" class="form-control" asp-for="PublisherName" name="PublisherName" id="PublisherName"></label>
+
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom03">قیمت</label>
+                <label type="number" class="form-control" name="Price" asp-for="Price" id="Price"></label>
+
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom03">تخفیف (درصد)</label>
+                <label type="number" class="form-control" asp-for="Discount" name="Discount" id="Discount"></label>
+
+            </div>
+
+
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom04">ژانر</label>
+                <label class="custom-select" name="Janre" id="Janre">
+                    @(Model.Janre.ToString().ToEnum<PersianNov.DataStructure.Tools.Enums.Janre>().GetDescription())
+                </label>
+
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom03">تعداد صفحات</label>
+                <label type="number" class="form-control" name="PageCount" id="PageCount">@Model.PageCount</label>
+
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-12 mb-3">
+                <label for="exampleFormControlTextarea1">موضوع </label>
+                <label class="form-control" name="Subject" asp-for="Subject" id="Subject" rows="5">@Model.Subject</label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-12 mb-3">
+                <label for="exampleFormControlTextarea1">چکیده </label>
+                <label class="form-control" id="Abstract" asp-for="Abstract" name="Abstract" rows="5">@Model.Abstract</label>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom04">تصویر کتاب</label>
+                <input type="file" class="form-control" name="image" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom04">فایل PDF</label>
+
+                <input type="file" class="form-control" id="inputGroupFile01" name="pdf" aria-describedby="inputGroupFileAddon01">
+
+
+            </div>
+        </div>
+
+
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="FreeStydy">پایان یافته است ؟</label>
+                <label class="form-control">
+                    @(Model.Finished?"بله":"خیر")
+                </label>
+
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="FreeStydy">مطالعه برای عموم آزاد است ؟ </label>
+                <label class="form-control">
+                    @(Model.FreeStydy?"بله":"خیر")
+                </label>
+            </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+
+                <label for="FreeStydy">نمایش داده شود ؟ </label>
+                <label class="form-control">
+                    @(Model.Enabled?"بله":"خیر")
+                </label>
+            </div>
+        </div>
+
+
+
+        <button class="btn btn-primary" type="submit">ثبت</button>
+    </form>
+
+</div>
+
+
