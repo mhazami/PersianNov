@@ -6,7 +6,6 @@ using PersianNov.DataStructure;
 using PersianNov.Services;
 using Radyn.Utility;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using WebApp.Models;
 using static PersianNov.DataStructure.Tools.Enums;
@@ -20,14 +19,15 @@ namespace Author.Controllers
         public async Task<IActionResult> Index(Guid bookId)
         {
             var BookParts = await PersianNovComponent.Instance.BookPartFacade.WhereAsync(x => x.BookId == bookId);
+            ViewBag.BookId = bookId;
             return View(BookParts);
         }
 
-        public IActionResult Create()
+        public IActionResult Create(Guid bookId)
         {
             ViewBag.Message = "";
             ViewBag.Janre = new SelectList(EnumUtils.ConvertEnumToIEnumerable<Janre>(), "Key", "Value");
-            return View(new BookPart());
+            return View(new BookPart { BookId = bookId });
         }
 
         [HttpPost]
@@ -35,11 +35,9 @@ namespace Author.Controllers
         {
             try
             {
-                var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "Id")?.Value;
-                BookPart.AuthorId = userId.ToInt();
                 BookPart.PublishDate = DateTime.Now.ShamsiDate();
-                if (!PersianNovComponent.Instance.BookPartFacade.Insert(BookPart, image, pdf))
-                    throw new Exception("خطایی در درج اطلاعات کتاب رخ داده است");
+                //if (!PersianNovComponent.Instance.BookPartFacade.Insert(BookPart, image, pdf))
+                //    throw new Exception("خطایی در درج اطلاعات کتاب رخ داده است");
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
