@@ -10,5 +10,6 @@ namespace PersianNov.Services.Interface
     public interface IBookPartFacade : IBaseFacade<BookPart>
     {
         bool Insert(BookPart bookPart, IFormFile image);
+        bool Update(BookPart bookPart, IFormFile image);
     }
 }

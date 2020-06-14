@@ -1,0 +1,62 @@
+﻿@using Radyn.Utility;
+@using PersianNov.DataStructure.Tools;
+@model PersianNov.DataStructure.BookPart
+@{
+    ViewData["Title"] = "جزئیات پارت";
+    Layout = "~/Views/Shared/_AuthorLayout.cshtml";
+}
+
+
+<div class="container-fluid">
+    @if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <div class="alert alert-danger text-center">
+            @ViewBag.Message
+        </div>
+    }
+
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="validationCustom01">عنوان</label>
+            <label class="form-control">@Model.Name</label>
+
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="validationCustom02">شماره پارت</label>
+            <label class="form-control">@Model.PartNumber</label>
+
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="validationCustom03">تاریخ نشر</label>
+            <label class="form-control" >@Model.PublishDate</label>
+
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="VIP">VIP است ؟</label>
+            <label>@(Model.VIP.HasValue && Model.VIP.Value ? "بله" : "خیر")</label>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="Enabled">فعال است ؟ </label>
+            <label>@(Model.Enabled == true ? "بله" : "خیر")</label>
+
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="validationCustom04">تصویر پارت</label>
+            <input type="file" class="form-control" name="image" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+        </div>
+    </div>
+
+
+    <a class="btn btn-warning" asp-action="Index" asp-route-bookId="@Model.BookId">بازگشت</a>
+</div>
+
+

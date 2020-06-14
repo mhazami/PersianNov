@@ -111,8 +111,7 @@ namespace Author.Controllers
         }
 
         [HttpPost]
-        [ActionName("Delete")]
-        public IActionResult DeleteBook(Book book)
+        public IActionResult Delete(Book book)
         {
             try
             {

@@ -1,45 +1,52 @@
-﻿@model PersianNov.DataStructure.BookPart
+﻿@using Radyn.Utility;
+@using PersianNov.DataStructure.Tools;
+@model PersianNov.DataStructure.BookPart
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "حذف پارت";
     Layout = "~/Views/Shared/_AuthorLayout.cshtml";
 }
 
-<div class="container-fluid">
 
-    <form method="post" enctype="multipart/form-data" action="/BookPart/Create">
+<div class="container-fluid">
+    @if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <div class="alert alert-danger text-center">
+            @ViewBag.Message
+        </div>
+    }
+    <form method="post" enctype="multipart/form-data" action="/BookPart/Delete">
         <input type="hidden" name="BookId" value="@Model.BookId" />
+        <input type="hidden" name="Id" value="@Model.Id" />
 
         <div class="form-row">
             <div class="col-md-6 mb-3">
                 <label for="validationCustom01">عنوان</label>
-                <input type="text" class="form-control" name="Name" />
+                <label type="text" class="form-control" asp-for="Name" value="@Model.Name" />
 
             </div>
             <div class="col-md-6 mb-3">
                 <label for="validationCustom02">شماره پارت</label>
-                <input type="number" class="form-control" name="PartNumber" />
+                <label type="number" class="form-control" asp-for="PartNumber" value="@Model.PartNumber" />
 
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-6 mb-3">
                 <label for="validationCustom03">تاریخ نشر</label>
-                <input type="date" class="form-control" name="PublishDate" />
+                <label type="date" class="form-control" asp-for="PublishDate" />
 
             </div>
         </div>
 
         <div class="form-row">
             <div class="col-md-6 mb-3">
-                <label for="FreeStydy">VIP است ؟</label>
-                <input type="radio" value="true" name="VIP">بله
-                <input type="radio" value="false" name="VIP">خیر
+                <label for="VIP">VIP است ؟</label>
+                <label>@(Model.VIP.HasValue && Model.VIP.Value ? "بله" : "خیر")</label>
             </div>
 
             <div class="col-md-6 mb-3">
-                <label for="FreeStydy">فعال است ؟ </label>
-                <input type="radio" value="true" name="Enabled">بله
-                <input type="radio" value="false" name="Enabled">خیر
+                <label for="Enabled">فعال است ؟ </label>
+                <label>@(Model.Enabled == true ? "بله" : "خیر")</label>
 
             </div>
         </div>
@@ -52,8 +59,10 @@
         </div>
 
 
-        <button class="btn btn-primary" type="submit">ثبت</button>
+        <button class="btn btn-danger" type="submit">حذف</button>
         <a class="btn btn-warning" asp-action="Index" asp-route-bookId="@Model.BookId">بازگشت</a>
     </form>
 
 </div>
+
+
