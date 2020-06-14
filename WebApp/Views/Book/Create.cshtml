@@ -64,17 +64,13 @@
         <div class="form-row">
             <div class="col-md-6 mb-3">
                 <label for="validationCustom04">تصویر کتاب</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="image" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                    <label class="custom-file-label" for="inputGroupFile01"></label>
-                </div>
+                <input type="file" class="form-control" name="image" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
             </div>
             <div class="col-md-6 mb-3">
                 <label for="validationCustom04">فایل PDF</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="inputGroupFile01" name="pdf" aria-describedby="inputGroupFileAddon01">
-                    <label class="custom-file-label" for="inputGroupFile01"></label>
-                </div>
+
+                <input type="file" class="form-control" id="inputGroupFile01" name="pdf" aria-describedby="inputGroupFileAddon01">
+
 
             </div>
         </div>
@@ -83,45 +79,28 @@
 
         <div class="form-row">
             <div class="col-md-6 mb-3">
-                <div class="form-group">
-                    <div class="form-group">
-                        <div class="custom-control custom-checkbox small">
-                            <input type="checkbox" name="Finished" class="custom-control-input" id="customCheck">
-                            <label class="custom-control-label" for="customCheck">پایان یافته است</label>
-                        </div>
-                    </div>
-                </div>
+                <label for="FreeStydy">پایان یافته است ؟</label>
+                <input type="radio" value="true" name="Finished" id="Finished">بله
+                <input type="radio" value="false" name="Finished" id="Finished">خیر
+            </div>
+       
+            <div class="col-md-6 mb-3">
+                <label for="FreeStydy">مطالعه برای عموم آزاد است ؟ </label>
+                <input type="radio" value="true" name="FreeStydy" id="FreeStydy">بله
+                <input type="radio" value="false" name="FreeStydy" id="FreeStydy">خیر
+
             </div>
         </div>
+
 
         <div class="form-row">
             <div class="col-md-6 mb-3">
-                <div class="form-group">
-                    <div class="form-group">
-                        <div class="custom-control custom-checkbox small">
-                            <input type="checkbox" name="FreeStydy" class="custom-control-input" id="customCheck">
-                            <label class="custom-control-label" for="customCheck">مطالعه برای عموم آزاد است</label>
-                        </div>
-                    </div>
-                </div>
+              
+                <label for="FreeStydy">نمایش داده شود ؟ </label>
+                <input type="radio" value="true" name="Show" id="Show">بله
+                <input type="radio" value="false" name="Show" id="Show">خیر
             </div>
         </div>
-
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
-                <div class="form-group">
-                    <div class="form-group">
-                        <div class="custom-control custom-checkbox small">
-                            <input type="checkbox" name="Show" class="custom-control-input" id="customCheck">
-                            <label class="custom-control-label" for="customCheck">نمایش داده شود</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
 
 
 

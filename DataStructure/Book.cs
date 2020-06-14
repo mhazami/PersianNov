@@ -84,6 +84,7 @@ namespace PersianNov.DataStructure
 
 
         private int _pageCount;
+        [IsNullable]
         [DbType("int")]
         public int PageCount
         {

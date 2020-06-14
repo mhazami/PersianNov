@@ -26,8 +26,25 @@ namespace WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var type = Configuration.GetSection("SystemType").Value;
+            var loginUrl = string.Empty;
+            switch (type)
+            {
+                case "Author":
+                    loginUrl = "/Author/Login";
+                    break;
+                case "Publisher":
+                    loginUrl = "/Publisher/Login";
+                    break;
+                default:
+                    loginUrl = "/ورود-مخاطب";
+                    break;
+            }
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(option =>
-            option.Cookie.Name = "User");
+            {
+                option.LoginPath = loginUrl;
+                option.Cookie.Name = "User";
+            });
             string connectionString = Configuration.GetConnectionString("PersianVonConnectionString");
 
             PersianNovComponent.ConnectionString = connectionString;
@@ -55,18 +72,32 @@ namespace WebApp
             app.UseAuthentication();
             app.UseAuthorization();
 
-         
+
             var cookiePolicyOptions = new CookiePolicyOptions
             {
                 MinimumSameSitePolicy = SameSiteMode.Strict,
             };
             app.UseCookiePolicy(cookiePolicyOptions);
+            var type = Configuration.GetSection("SystemType").Value;
+            var pattern = string.Empty;
+            switch (type)
+            {
+                case "Author":
+                    pattern = "{controller=Author}/{action=Cartable}/{id?}";
+                    break;
+                case "Publisher":
+                    pattern = "{controller=Publisher}/{action=Cartable}/{id?}";
+                    break;
+                default:
+                    pattern = "{controller=Home}/{action=Index}/{id?}";
+                    break;
+            }
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: pattern);
             });
         }
     }
