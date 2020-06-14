@@ -11,11 +11,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using PersianNov.DataStructure;
 using PersianNov.Services;
 using Radyn.Utility;
+using WebApp.Models;
 using static PersianNov.DataStructure.Tools.Enums;
 
 namespace Author.Controllers
 {
-    [Authorize(Roles = "Author")]
+    [Authorize(Roles = Constant.Author)]
     public class BookController : Controller
     {
 
