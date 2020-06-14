@@ -9,10 +9,10 @@ namespace PersianNov.DataStructure
     [Schema("Book")]
     public sealed class PublisherBook : DataStructureBase<PublisherBook>
     {
-        public Int32 _publisherId;
+        public Guid _publisherId;
         [Key(false)]
-        [DbType("int")]
-        public Int32 PublisherId
+        [DbType("uniqueidentifier")]
+        public Guid PublisherId
         {
             get { return _publisherId; }
             set { base.SetPropertyValue("PublisherId", value); }
@@ -22,10 +22,10 @@ namespace PersianNov.DataStructure
 
 
 
-        public Int32 _bookId;
+        public Guid _bookId;
         [Key(false)]
-        [DbType("int")]
-        public Int32 BookId
+        [DbType("uniqueidentifier")]
+        public Guid BookId
         {
             get { return _bookId; }
             set { base.SetPropertyValue("BookId", value); }

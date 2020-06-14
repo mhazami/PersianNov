@@ -10,6 +10,11 @@ namespace PersianNov.Services.Facade
 {
     public sealed class AuthorFacade : PersianNovBaseFacade<Author>, IAuthorFacade
     {
+        public bool CheckBookOwner(Guid authorId, Guid bookId)
+        {
+            return new AuthorBO().CheckBookOwner(ConnectionHandler, authorId, bookId);
+        }
+
         public async Task<Author> Login(string username, string password)
         {
             return await new AuthorBO().Login(base.ConnectionHandler, username, password);

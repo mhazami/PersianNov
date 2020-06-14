@@ -17,10 +17,10 @@ namespace PersianNov.DataStructure
             RegisterStatus = RegisterStatus.Prossecing;
         }
 
-        private Int32 _id;
-        [Key(true)]
+        private Guid _id;
+        [Key(false)]
         [DbType("int")]
-        public Int32 Id
+        public Guid Id
         {
             get { return _id; }
             set { base.SetPropertyValue("Id", value); }

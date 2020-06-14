@@ -10,5 +10,7 @@ namespace PersianNov.Services.Interface
     public interface IAuthorFacade : IBaseFacade<Author>
     {
         Task<Author> Login(string username, string password);
+
+        bool CheckBookOwner(Guid authorId, Guid bookId);
     }
 }

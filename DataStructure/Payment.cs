@@ -11,18 +11,18 @@ namespace PersianNov.DataStructure
     [Schema("Payment")]
     public sealed class Payment : DataStructureBase<Payment>
     {
-        public Int32 _id;
-        [Key(true)]
-        [DbType("int")]
-        public Int32 Id
+        public Guid _id;
+        [Key(false)]
+        [DbType("uniqueidentifier")]
+        public Guid Id
         {
             get { return _id; }
             set { base.SetPropertyValue("Id", value); }
         }
 
-        public Int32? _customerId;
-        [DbType("int")]
-        public Int32? CustomerId
+        public Guid? _customerId;
+        [DbType("uniqueidentifier")]
+        public Guid? CustomerId
         {
             get { return _customerId; }
             set { base.SetPropertyValue("CustomerId", value); }
@@ -30,9 +30,9 @@ namespace PersianNov.DataStructure
         [Assosiation(PropName = "CustomerId")]
         public Customer Customer { get; set; }
 
-        public Int32? _publisherId;
-        [DbType("int")]
-        public Int32? PublisherId
+        public Guid? _publisherId;
+        [DbType("uniqueidentifier")]
+        public Guid? PublisherId
         {
             get { return _publisherId; }
             set { base.SetPropertyValue("PublisherId", value); }
@@ -41,9 +41,9 @@ namespace PersianNov.DataStructure
         public Publisher Publisher { get; set; }
 
 
-        public Int32? _authorId;
-        [DbType("int")]
-        public Int32? AuthorId
+        public Guid? _authorId;
+        [DbType("uniqueidentifier")]
+        public Guid? AuthorId
         {
             get { return _authorId; }
             set { base.SetPropertyValue("AuthorId", value); }
@@ -52,9 +52,9 @@ namespace PersianNov.DataStructure
         public Author Author { get; set; }
 
 
-        public Int32? _orderId;
-        [DbType("int")]
-        public Int32? OrderId
+        public Guid? _orderId;
+        [DbType("uniqueidentifier")]
+        public Guid? OrderId
         {
             get { return _orderId; }
             set { base.SetPropertyValue("OrderId", value); }

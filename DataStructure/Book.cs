@@ -19,18 +19,18 @@ namespace PersianNov.DataStructure
             Discount = 0;
             FreeStydy = false;
         }
-        private Int32 _id;
-        [Key(true)]
-        [DbType("int")]
-        public Int32 Id
+        private Guid _id;
+        [Key(false)]
+        [DbType("uniqueidentifier")]
+        public Guid Id
         {
             get { return _id; }
             set { base.SetPropertyValue("Id", value); }
         }
 
-        private Int32? _authorId;
-        [DbType("int")]
-        public Int32? AuthorId
+        private Guid? _authorId;
+        [DbType("uniqueidentifier")]
+        public Guid? AuthorId
         {
             get { return _authorId; }
             set { base.SetPropertyValue("AuthorId", value); }
@@ -39,9 +39,9 @@ namespace PersianNov.DataStructure
         public Author Author { get; set; }
 
 
-        private Int32? _publisherId;
-        [DbType("int")]
-        public Int32? PublisherId
+        private Guid? _publisherId;
+        [DbType("uniqueidentifier")]
+        public Guid? PublisherId
         {
             get { return _publisherId; }
             set { base.SetPropertyValue("PublisherId", value); }

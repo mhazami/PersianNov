@@ -11,19 +11,19 @@ namespace PersianNov.DataStructure
     public sealed class Order : DataStructureBase<Order>
     {
 
-        public Int32 _id;
-        [Key(true)]
-        [DbType("int")]
-        public Int32 Id
+        public Guid _id;
+        [Key(false)]
+        [DbType("uniqueidentifier")]
+        public Guid Id
         {
             get { return _id; }
             set { base.SetPropertyValue("Id", value); }
         }
 
 
-        public Int32 _customerId;
-        [DbType("int")]
-        public Int32 CustomerId
+        public Guid _customerId;
+        [DbType("uniqueidentifier")]
+        public Guid CustomerId
         {
             get { return _customerId; }
             set { base.SetPropertyValue("CustomerId", value); }
@@ -34,9 +34,9 @@ namespace PersianNov.DataStructure
 
 
 
-        public Int32 _bookId;
-        [DbType("int")]
-        public Int32 BookId
+        public Guid _bookId;
+        [DbType("uniqueidentifier")]
+        public Guid BookId
         {
             get { return _bookId; }
             set { base.SetPropertyValue("BookId", value); }

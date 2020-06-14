@@ -19,8 +19,6 @@ namespace PersianNov.Services.BO
                 throw new Exception("لطفا عنوان کتاب را وارد کنید");
             if (item.AuthorId == null)
                 throw new Exception("خطایی در زما درج اطلاعات رخ داده است");
-            if (item.PageCount == 0)
-                throw new Exception("لطفا تعداد صفحات کتاب را مشخص نمایید");
             if (string.IsNullOrEmpty(item.Subject))
                 throw new Exception("لطفا موضوع کتاب را مشخص نمایید");
             base.CheckConstraint(connectionHandler, item);

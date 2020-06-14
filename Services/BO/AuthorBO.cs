@@ -26,6 +26,11 @@ namespace PersianNov.Services.BO
             base.CheckConstraint(connectionHandler, item);
         }
 
+        internal bool CheckBookOwner(IConnectionHandler connectionHandler, Guid authorId, Guid bookId)
+        {
+            return new BookBO().Any(connectionHandler, x => x.AuthorId == authorId && x.Id == bookId);
+        }
+
         public override Task<bool> InsertAsync(IConnectionHandler connectionHandler, Author obj)
         {
             var exist = base.Any(connectionHandler, x => x.Email.ToLower() == obj.Email.ToLower());
