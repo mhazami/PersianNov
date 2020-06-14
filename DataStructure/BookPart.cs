@@ -26,9 +26,9 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("Name", value); }
         }
 
-        public Int32 _bookId;
-        [DbType("int")]
-        public Int32 BookId
+        public Guid _bookId;
+        [DbType("uniqueidentifier")]
+        public Guid BookId
         {
             get { return _bookId; }
             set { base.SetPropertyValue("BookId", value); }

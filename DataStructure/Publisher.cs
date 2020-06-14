@@ -9,10 +9,10 @@ namespace PersianNov.DataStructure
     [Schema("EnterPrise")]
     public sealed class Publisher : DataStructureBase<Publisher>
     {
-        public Int32 _id;
-        [Key(true)]
-        [DbType("int")]
-        public Int32 Id
+        public Guid _id;
+        [Key(false)]
+        [DbType("uniqueidentifier")]
+        public Guid Id
         {
             get { return _id; }
             set { base.SetPropertyValue("Id", value); }

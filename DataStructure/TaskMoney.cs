@@ -10,19 +10,19 @@ namespace PersianNov.DataStructure
     [Schema("Payment")]
     public sealed class TaskMoney : DataStructureBase<TaskMoney>
     {
-        public Int32 _id;
-        [Key(true)]
-        [DbType("int")]
-        public Int32 Id
+        public Guid _id;
+        [Key(false)]
+        [DbType("uniqueidentifier")]
+        public Guid Id
         {
             get { return _id; }
             set { base.SetPropertyValue("Id", value); }
         }
 
 
-        public Int32 _authorId;
-        [DbType("int")]
-        public Int32 AuthorId
+        public Guid _authorId;
+        [DbType("uniqueidentifier")]
+        public Guid AuthorId
         {
             get { return _authorId; }
             set { base.SetPropertyValue("AuthorId", value); }
