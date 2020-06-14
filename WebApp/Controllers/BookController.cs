@@ -76,12 +76,6 @@ namespace Author.Controllers
             try
             {
                 var old = PersianNovComponent.Instance.BookFacade.FirstOrDefault(x => x.Id == book.Id);
-                book.Image = old.Image;
-                book.PDF = old.PDF;
-                book.PublishDate = old.PublishDate;
-                book.AuthorId = old.AuthorId;
-                book.Id = old.Id;
-                book.Enabled = old.Enabled;
                 if (old != null)
                 {
                     if (!PersianNovComponent.Instance.BookFacade.Update(book, image, pdf))

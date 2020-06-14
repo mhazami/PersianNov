@@ -28,7 +28,7 @@ namespace Author.Controllers {
         [HttpPost]
         public IActionResult Create (BookPart BookPart, IFormFile image) {
             try {
-                BookPart.PublishDate = DateTime.Now.ShamsiDate ();
+                BookPart.PublishDate = DateTime.Now.ShamsiDate();
                 if (!PersianNovComponent.Instance.BookPartFacade.Insert (BookPart, image))
                     throw new Exception ("خطایی در درج اطلاعات کتاب رخ داده است");
                 return RedirectToAction ("Index", new { bookId = BookPart.BookId });
