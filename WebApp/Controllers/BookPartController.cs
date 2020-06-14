@@ -19,7 +19,7 @@ namespace Author.Controllers
         public async Task<IActionResult> Index(Guid bookId)
         {
             var BookParts = await PersianNovComponent.Instance.BookPartFacade.WhereAsync(x => x.BookId == bookId);
-            ViewBag.BookId = bookId;
+            ViewBag.Book = PersianNovComponent.Instance.BookFacade.Get(bookId);
             return View(BookParts);
         }
 
@@ -31,14 +31,14 @@ namespace Author.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(BookPart BookPart, IFormFile image, IFormFile pdf)
+        public IActionResult Create(BookPart BookPart, IFormFile image)
         {
             try
             {
                 BookPart.PublishDate = DateTime.Now.ShamsiDate();
-                //if (!PersianNovComponent.Instance.BookPartFacade.Insert(BookPart, image, pdf))
-                //    throw new Exception("خطایی در درج اطلاعات کتاب رخ داده است");
-                return RedirectToAction("Index");
+                if (!PersianNovComponent.Instance.BookPartFacade.Insert(BookPart, image))
+                    throw new Exception("خطایی در درج اطلاعات کتاب رخ داده است");
+                return RedirectToAction("Index", new { bookId = BookPart.BookId });
             }
             catch (Exception ex)
             {

@@ -1,4 +1,4 @@
-﻿@model PersianNov.DataStructure.Book
+﻿@model PersianNov.DataStructure.BookPart
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_AuthorLayout.cshtml";
@@ -6,102 +6,50 @@
 
 <div class="container-fluid">
 
-    <form method="post" enctype="multipart/form-data" action="/Book/Create">
+    <form method="post" enctype="multipart/form-data" action="/BookPart/Create">
+        <input type="hidden" name="BookId" value="@Model.BookId" />
+
         <div class="form-row">
             <div class="col-md-6 mb-3">
                 <label for="validationCustom01">عنوان</label>
-                <input type="text" class="form-control" name="Name" id="Name" />
+                <input type="text" class="form-control" name="Name" />
 
             </div>
             <div class="col-md-6 mb-3">
-                <label for="validationCustom02">نام ناشر </label>
-                <input type="text" class="form-control" name="PublisherName" id="PublisherName" />
+                <label for="validationCustom02">شماره پارت</label>
+                <input type="number" class="form-control" name="PartNumber" />
 
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-6 mb-3">
-                <label for="validationCustom03">قیمت</label>
-                <input type="number" class="form-control" name="Price" id="Price">
+                <label for="validationCustom03">تاریخ نشر</label>
+                <input type="date" class="form-control" name="PublishDate" />
 
-            </div>
-            <div class="col-md-6 mb-3">
-                <label for="validationCustom03">تخفیف (درصد)</label>
-                <input type="number" class="form-control" name="Discount" id="Discount">
-
-            </div>
-
-
-        </div>
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
-                <label for="validationCustom04">ژانر</label>
-                <select class="custom-select" name="Janre" id="Janre" asp-items="(SelectList)ViewBag.Janre">
-                </select>
-                <div class="invalid-feedback">
-                    Please select a valid state.
-                </div>
-            </div>
-            <div class="col-md-6 mb-3">
-                <label for="validationCustom03">تعداد صفحات</label>
-                <input type="number" class="form-control" name="PageCount" id="PageCount">
-
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-12 mb-3">
-                <label for="exampleFormControlTextarea1">موضوع </label>
-                <textarea class="form-control" name="Subject" id="Subject" rows="5"></textarea>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-12 mb-3">
-                <label for="exampleFormControlTextarea1">چکیده </label>
-                <textarea class="form-control" id="Abstract" name="Abstract" rows="5"></textarea>
             </div>
         </div>
 
         <div class="form-row">
             <div class="col-md-6 mb-3">
-                <label for="validationCustom04">تصویر کتاب</label>
+                <label for="FreeStydy">VIP است ؟</label>
+                <input type="radio" value="true" name="VIP">بله
+                <input type="radio" value="false" name="VIP">خیر
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="FreeStydy">فعال است ؟ </label>
+                <input type="radio" value="true" name="Enabled">بله
+                <input type="radio" value="false" name="Enabled">خیر
+
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom04">تصویر پارت</label>
                 <input type="file" class="form-control" name="image" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
             </div>
-            <div class="col-md-6 mb-3">
-                <label for="validationCustom04">فایل PDF</label>
-
-                <input type="file" class="form-control" id="inputGroupFile01" name="pdf" aria-describedby="inputGroupFileAddon01">
-
-
-            </div>
         </div>
-
-
-
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
-                <label for="FreeStydy">پایان یافته است ؟</label>
-                <input type="radio" value="true" name="Finished" id="Finished">بله
-                <input type="radio" value="false" name="Finished" id="Finished">خیر
-            </div>
-       
-            <div class="col-md-6 mb-3">
-                <label for="FreeStydy">مطالعه برای عموم آزاد است ؟ </label>
-                <input type="radio" value="true" name="FreeStydy" id="FreeStydy">بله
-                <input type="radio" value="false" name="FreeStydy" id="FreeStydy">خیر
-
-            </div>
-        </div>
-
-
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
-              
-                <label for="FreeStydy">نمایش داده شود ؟ </label>
-                <input type="radio" value="true" name="Show" id="Show">بله
-                <input type="radio" value="false" name="Show" id="Show">خیر
-            </div>
-        </div>
-
 
 
         <button class="btn btn-primary" type="submit">ثبت</button>

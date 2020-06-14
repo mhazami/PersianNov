@@ -1,4 +1,5 @@
-﻿using PersianNov.DataStructure;
+﻿using Microsoft.AspNetCore.Http;
+using PersianNov.DataStructure;
 using Radyn.Framework;
 using System;
 using System.Collections.Generic;
@@ -8,5 +9,6 @@ namespace PersianNov.Services.Interface
 {
     public interface IBookPartFacade : IBaseFacade<BookPart>
     {
+        bool Insert(BookPart bookPart, IFormFile image);
     }
 }

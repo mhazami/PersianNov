@@ -36,25 +36,14 @@ namespace PersianNov.DataStructure
 		}
 
 		private Guid? _image;
-		[IsNullable]
 		[DbType("uniqueidentifier")]
 		public Guid? Image
 		{
-			get
-			{
-				return this._image;
-			}
-			set
-			{
-				base.SetPropertyValue("Image", value);
-				if (value.HasValue)
-					this.File = new File { Id = value.Value };
-				else
-					this.File = null;
-			}
+			get { return _image; }
+			set { base.SetPropertyValue("Image", value); }
 		}
 		[Assosiation(PropName = "Image")]
-		public File File { get; set; }
+		public File ImageFile { get; set; }
 
 		private string _publishDate;
 		[IsNullable]
