@@ -31,10 +31,11 @@ namespace Author.Controllers
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Login(string username, string password)
+        public IActionResult Login(string username, string password)
         {
             try
             {
-                var author = await PersianNovComponent.Instance.AuthorFacade.Login(username, password);
+                var author = PersianNovComponent.Instance.AuthorFacade.Login(username, password);
                 if (author != null)
                 {
                     this.SetCookie(author);
@@ -126,6 +127,7 @@ namespace Author.Controllers
             var claims = new List<Claim>
                 {
                      new Claim(ClaimTypes.Name, $"{author.FirstName} {author.LastName}"),
+                     new Claim(ClaimTypes.NameIdentifier, author.Username),
                      new Claim(ClaimTypes.Email,author.Email),
                      new Claim("Id",author.Id.ToString()),
                      new Claim(ClaimTypes.Role, "Author"),
@@ -141,12 +143,12 @@ namespace Author.Controllers
                 // Refreshing the authentication session should be allowed.
 
                 ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(20),
-                // The time at which the authentication ticket expires. A 
-                // value set here overrides the ExpireTimeSpan option of 
+                // The time at which the authentication ticket expires. A
+                // value set here overrides the ExpireTimeSpan option of
                 // CookieAuthenticationOptions set with AddCookie.
 
                 //IsPersistent = true,
-                // Whether the authentication session is persisted across 
+                // Whether the authentication session is persisted across
                 // multiple requests. When used with cookies, controls
                 // whether the cookie's lifetime is absolute (matching the
                 // lifetime of the authentication ticket) or session-based.
@@ -155,7 +157,7 @@ namespace Author.Controllers
                 // The time at which the authentication ticket was issued.
 
                 //RedirectUri = <string>
-                // The full path or absolute URI to be used as an http 
+                // The full path or absolute URI to be used as an http
                 // redirect response value.
             };
 
@@ -163,6 +165,79 @@ namespace Author.Controllers
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity),
                 authProperties);
+        }
+
+        [Authorize(Roles = Constant.Author)]
+        public IActionResult Profile()
+        {
+            var authorId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "Id")?.Value;
+            var author = PersianNovComponent.Instance.AuthorFacade.Get(authorId);
+            return View(author);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Profile(PersianNov.DataStructure.Author author)
+        {
+            try
+            {
+                if (await PersianNovComponent.Instance.AuthorFacade.UpdateAsync(author))
+                {
+                    this.SetCookie(author);
+                    return Redirect("/");
+
+                }
+                else
+                {
+                    ViewBag.Message = "خطایی در زمان ویرایش رخ داده است لطفا بعدا مجدد تلاش کنید"; ;
+                    return View(author);
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.InnerException.Message;
+                return View(author);
+            }
+        }
+
+        public IActionResult ChangePassword()
+        {
+            var authorId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "Id")?.Value;
+            var author = PersianNovComponent.Instance.AuthorFacade.Get(authorId);
+            return View(author);
+        }
+
+        [HttpPost]
+        public IActionResult ChangePassword(PersianNov.DataStructure.Author author)
+        {
+            try
+            {
+                if (author.Password != author.RepeatPassword)
+                {
+                    ViewBag.Message = "رمز عبور و تکرار آن با هم مطابقت ندارند";
+                    return View(author);
+                }
+                var authorUsername = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+                if (PersianNovComponent.Instance.AuthorFacade.Login(authorUsername, author.FirstName) == null)
+                {
+                    ViewBag.Message = "رمز عبور قدیمی وارد شده صحیح نمی باشد.";
+                    return View(author);
+                }
+                if (PersianNovComponent.Instance.AuthorFacade.UpdatePassword(author))
+                {
+                    ViewBag.Message="رمز عبور با موفقیت تغییر یافت";
+                    return Redirect("/");
+                }
+                else
+                {
+                    ViewBag.Message = "خطایی در زمان ویرایش رخ داده است لطفا بعدا مجدد تلاش کنید"; ;
+                    return View(author);
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                return View(author);
+            }
         }
     }
 }

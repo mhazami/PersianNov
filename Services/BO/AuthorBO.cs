@@ -64,28 +64,29 @@ namespace PersianNov.Services.BO
             return base.InsertAsync(connectionHandler, obj);
         }
 
+        public bool UpdatePassword(IConnectionHandler connectionHandler, Author obj)
+        {
+            var old = base.GetAsync(connectionHandler, obj.Id);
+            old.Result.Password = StringUtils.HashPassword(obj.Password);
+            return base.Update(connectionHandler, old.Result);
+        }
+
         public override Task<bool> UpdateAsync(IConnectionHandler connectionHandler, Author obj)
         {
             var old = base.GetAsync(connectionHandler, obj.Id);
-            if (!string.IsNullOrEmpty(obj.Password))
-            {
-                if (obj.Password != obj.RepeatPassword)
-                    throw new Exception("رمز عبور و تکرار آن مطابقت ندارند");
-                if (StringUtils.HashPassword(obj.Password) != obj.Password)
-                    obj.Password = StringUtils.HashPassword(obj.Password);
-
-            }
+            if (string.IsNullOrEmpty(obj.Password))
+                obj.Password = old.Result.Password;
             return base.UpdateAsync(connectionHandler, obj);
         }
 
-        public async Task<Author> Login(IConnectionHandler connectionHandler, string username, string password)
+        public Author Login(IConnectionHandler connectionHandler, string username, string password)
         {
             if (string.IsNullOrEmpty(password))
                 throw new Exception("رمز غبور را وارد کنید");
             if (string.IsNullOrEmpty(username))
                 throw new Exception("نام کاربری یا ایمیل خود را وارد کنید");
 
-            return await base.FirstOrDefaultAsync(connectionHandler, x => x.Username == username ||
+            return base.FirstOrDefault(connectionHandler, x => x.Username == username &&
             x.Email == username && x.Password == StringUtils.HashPassword(password));
         }
     }
