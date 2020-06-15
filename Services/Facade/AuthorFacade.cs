@@ -20,7 +20,6 @@ namespace PersianNov.Services.Facade
             return new AuthorBO().ForgotPassword(base.ConnectionHandler, email);
         }
 
-        public async Task<Author> Login(string username, string password)
         public Author Login(string username, string password)
 
         {

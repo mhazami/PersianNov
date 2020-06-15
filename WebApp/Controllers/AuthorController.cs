@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using WebApp.Models;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 
 namespace Author.Controllers
 {
@@ -30,7 +31,6 @@ namespace Author.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(string username, string password)
         public IActionResult Login(string username, string password)
         {
             try
@@ -224,7 +224,7 @@ namespace Author.Controllers
                 }
                 if (PersianNovComponent.Instance.AuthorFacade.UpdatePassword(author))
                 {
-                    ViewBag.Message="رمز عبور با موفقیت تغییر یافت";
+                    ViewBag.Message = "رمز عبور با موفقیت تغییر یافت";
                     return Redirect("/");
                 }
                 else
@@ -238,6 +238,27 @@ namespace Author.Controllers
                 ViewBag.Message = ex.Message;
                 return View(author);
             }
+        }
+
+        [AllowAnonymous]
+        public IActionResult ForgotReturnPage(Guid id)
+        {
+            var author = PersianNovComponent.Instance.AuthorFacade.Get(id);
+            return View(author);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public IActionResult ForgotReturnPage(PersianNov.DataStructure.Author author)
+        {
+            if (PersianNovComponent.Instance.AuthorFacade.UpdatePassword(author))
+            {
+                var obj = PersianNovComponent.Instance.AuthorFacade.Get(author.Id);
+                SetCookie(obj);
+                return Redirect("/");
+            }
+            ViewBag.Message = "خطایی در تغییر رمز عبور رخ داده است لطفا مجدد تلاش نمایید";
+            return View(author);
         }
     }
 }
