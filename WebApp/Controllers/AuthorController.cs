@@ -8,6 +8,8 @@ using PersianNov.Services;
 using PersianNov.DataStructure;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using WebApp.Models;
 
 namespace Author.Controllers
 {
@@ -29,11 +31,11 @@ namespace Author.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(string username, string password)
+        public IActionResult Login(string username, string password)
         {
             try
             {
-                var author = await PersianNovComponent.Instance.AuthorFacade.Login(username, password);
+                var author = PersianNovComponent.Instance.AuthorFacade.Login(username, password);
                 if (author != null)
                 {
                     this.SetCookie(author);
@@ -64,8 +66,6 @@ namespace Author.Controllers
             return View(new PersianNov.DataStructure.Author());
         }
 
-
-
         [HttpPost]
         public async Task<IActionResult> Register(PersianNov.DataStructure.Author author)
         {
@@ -95,13 +95,14 @@ namespace Author.Controllers
             var claims = new List<Claim>
                 {
                      new Claim(ClaimTypes.Name, $"{author.FirstName} {author.LastName}"),
+                     new Claim(ClaimTypes.NameIdentifier, author.Username),
                      new Claim(ClaimTypes.Email,author.Email),
                      new Claim("Id",author.Id.ToString()),
                      new Claim(ClaimTypes.Role, "Author"),
                 };
 
 
-            var claimsIdentity = new ClaimsIdentity(
+            var claimsIdentity = new System.Security.Claims.ClaimsIdentity(
                 claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
             var authProperties = new AuthenticationProperties
@@ -132,6 +133,79 @@ namespace Author.Controllers
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity),
                 authProperties);
+        }
+
+        [Authorize(Roles = Constant.Author)]
+        public IActionResult Profile()
+        {
+            var authorId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "Id")?.Value;
+            var author = PersianNovComponent.Instance.AuthorFacade.Get(authorId);
+            return View(author);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Profile(PersianNov.DataStructure.Author author)
+        {
+            try
+            {
+                if (await PersianNovComponent.Instance.AuthorFacade.UpdateAsync(author))
+                {
+                    this.SetCookie(author);
+                    return Redirect("/");
+
+                }
+                else
+                {
+                    ViewBag.Message = "خطایی در زمان ویرایش رخ داده است لطفا بعدا مجدد تلاش کنید"; ;
+                    return View(author);
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.InnerException.Message;
+                return View(author);
+            }
+        }
+
+        public IActionResult ChangePassword()
+        {
+            var authorId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "Id")?.Value;
+            var author = PersianNovComponent.Instance.AuthorFacade.Get(authorId);
+            return View(author);
+        }
+
+        [HttpPost]
+        public IActionResult ChangePassword(PersianNov.DataStructure.Author author)
+        {
+            try
+            {
+                if (author.Password != author.RepeatPassword)
+                {
+                    ViewBag.Message = "رمز عبور و تکرار آن با هم مطابقت ندارند";
+                    return View(author);
+                }
+                var authorUsername = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+                if (PersianNovComponent.Instance.AuthorFacade.Login(authorUsername, author.FirstName) == null)
+                {
+                    ViewBag.Message = "رمز عبور قدیمی وارد شده صحیح نمی باشد.";
+                    return View(author);
+                }
+                if (PersianNovComponent.Instance.AuthorFacade.UpdatePassword(author))
+                {
+                    ViewBag.Message="رمز عبور با موفقیت تغییر یافت";
+                    return Redirect("/");
+                }
+                else
+                {
+                    ViewBag.Message = "خطایی در زمان ویرایش رخ داده است لطفا بعدا مجدد تلاش کنید"; ;
+                    return View(author);
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                return View(author);
+            }
         }
     }
 }
