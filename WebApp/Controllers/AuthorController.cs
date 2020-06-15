@@ -8,27 +8,28 @@ using PersianNov.Services;
 using PersianNov.DataStructure;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using WebApp.Models;
 
 namespace Author.Controllers
 {
+    [Authorize(Roles = Constant.Author)]
+
     public class AuthorController : Controller
     {
         public IActionResult Cartable()
         {
-            var user = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
-            if (string.IsNullOrEmpty(user))
-            {
-                return Redirect("/Author/Login");
-            }
             return View();
         }
 
+        [AllowAnonymous]
         public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(string username, string password)
         {
             try
@@ -52,21 +53,22 @@ namespace Author.Controllers
             }
         }
 
+
         public async Task<IActionResult> SignOut()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return Redirect("/");
         }
 
+        [AllowAnonymous]
         public IActionResult Register()
         {
             ViewBag.Message = "";
             return View(new PersianNov.DataStructure.Author());
         }
 
-
-
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(PersianNov.DataStructure.Author author)
         {
             try
@@ -90,6 +92,35 @@ namespace Author.Controllers
             }
         }
 
+        [AllowAnonymous]
+        public IActionResult ForgotPassword()
+        {
+            ViewBag.Message = "";
+            return View(model: "");
+        }
+
+
+
+        [HttpPost]
+        [AllowAnonymous]
+        public IActionResult ForgotPassword(string email)
+        {
+            ViewBag.Message = "success";
+
+            try
+            {
+                if (PersianNovComponent.Instance.AuthorFacade.ForgotPassword(email))
+                    return View(model: "ایمیلی جهت بازیابی رمز عبورتان برای شما ارسال شد");
+                ViewBag.Message = "danger";
+                return View(model: "خطایی رخ داده است لطفا مجدد تلاش نماییید");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = "danger";
+                return View(model: ex.Message);
+            }
+        }
+
         private async void SetCookie(PersianNov.DataStructure.Author author)
         {
             var claims = new List<Claim>
@@ -101,7 +132,7 @@ namespace Author.Controllers
                 };
 
 
-            var claimsIdentity = new ClaimsIdentity(
+            var claimsIdentity = new System.Security.Claims.ClaimsIdentity(
                 claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
             var authProperties = new AuthenticationProperties

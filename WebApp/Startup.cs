@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PersianNov.Services;
+using PersianNov.Services.Mail;
 
 namespace WebApp
 {
@@ -46,8 +47,10 @@ namespace WebApp
                 option.Cookie.Name = "User";
             });
             string connectionString = Configuration.GetConnectionString("PersianVonConnectionString");
+            string orginUrl = Configuration.GetSection("OrginUrl").Value;
 
             PersianNovComponent.ConnectionString = connectionString;
+            MailSender.OrginUrl = orginUrl;
             services.AddControllersWithViews();
         }
 

@@ -97,5 +97,16 @@ namespace PersianNov.DataStructure
 		public Book Book { get; set; }
 
 
+
+		private string _text;
+		[IsNullable]
+		[DbType("ntext")]
+		public string Text
+		{
+			get { return _text; }
+			set { base.SetPropertyValue("Text", value); }
+		}
+
+
 	}
 }

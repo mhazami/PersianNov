@@ -1,4 +1,5 @@
 ﻿using PersianNov.DataStructure;
+using PersianNov.Services.Mail;
 using Radyn.Framework;
 using Radyn.Framework.DbHelper;
 using Radyn.Utility;
@@ -31,6 +32,17 @@ namespace PersianNov.Services.BO
 
             item.Username = item.Email;
             base.CheckConstraint(connectionHandler, item);
+        }
+
+        internal bool ForgotPassword(IConnectionHandler connectionHandler, string email)
+        {
+            if (!Utils.IsEmail(email))
+                throw new Exception("ایمیل خود را صحیح وارد کنید");
+            var author = base.FirstOrDefault(connectionHandler, x => x.Email == email);
+            if (author == null)
+                throw new Exception("نویسنده ای با این آدرس ایمیل یافت نشد");
+            new MailSender().SendAuthorForgotPasswordEmail(author, email);
+            return true;
         }
 
         internal bool CheckBookOwner(IConnectionHandler connectionHandler, Guid authorId, Guid bookId)

@@ -15,6 +15,11 @@ namespace PersianNov.Services.Facade
             return new AuthorBO().CheckBookOwner(ConnectionHandler, authorId, bookId);
         }
 
+        public bool ForgotPassword(string email)
+        {
+            return new AuthorBO().ForgotPassword(base.ConnectionHandler, email);
+        }
+
         public async Task<Author> Login(string username, string password)
         {
             return await new AuthorBO().Login(base.ConnectionHandler, username, password);

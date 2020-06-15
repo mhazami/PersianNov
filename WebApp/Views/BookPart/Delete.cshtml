@@ -14,54 +14,61 @@
             @ViewBag.Message
         </div>
     }
-    <form method="post" enctype="multipart/form-data" action="/BookPart/Delete">
-        <input type="hidden" name="BookId" value="@Model.BookId" />
-        <input type="hidden" name="Id" value="@Model.Id" />
+<form method="post" enctype="multipart/form-data" action="/BookPart/Delete">
+    <input type="hidden" name="BookId" value="@Model.BookId" />
+    <input type="hidden" name="Id" value="@Model.Id" />
 
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
-                <label for="validationCustom01">عنوان</label>
-                <label type="text" class="form-control" asp-for="Name" value="@Model.Name" />
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="validationCustom01">عنوان</label>
+            <label type="text" class="form-control" asp-for="Name" value="@Model.Name" />
 
-            </div>
-            <div class="col-md-6 mb-3">
-                <label for="validationCustom02">شماره پارت</label>
-                <label type="number" class="form-control" asp-for="PartNumber" value="@Model.PartNumber" />
-
-            </div>
         </div>
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
-                <label for="validationCustom03">تاریخ نشر</label>
-                <label type="date" class="form-control" asp-for="PublishDate" />
+        <div class="col-md-6 mb-3">
+            <label for="validationCustom02">شماره پارت</label>
+            <label type="number" class="form-control" asp-for="PartNumber" value="@Model.PartNumber" />
 
-            </div>
         </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="validationCustom03">تاریخ نشر</label>
+            <label type="date" class="form-control" asp-for="PublishDate" />
 
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
-                <label for="VIP">VIP است ؟</label>
-                <label>@(Model.VIP.HasValue && Model.VIP.Value ? "بله" : "خیر")</label>
-            </div>
+        </div>
+    </div>
 
-            <div class="col-md-6 mb-3">
-                <label for="Enabled">فعال است ؟ </label>
-                <label>@(Model.Enabled == true ? "بله" : "خیر")</label>
-
-            </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="VIP">VIP است ؟</label>
+            <label>@(Model.VIP.HasValue && Model.VIP.Value ? "بله" : "خیر")</label>
         </div>
 
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
-                <label for="validationCustom04">تصویر پارت</label>
-                <input type="file" class="form-control" name="image" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-            </div>
+        <div class="col-md-6 mb-3">
+            <label for="Enabled">فعال است ؟ </label>
+            <label>@(Model.Enabled == true ? "بله" : "خیر")</label>
+
         </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="validationCustom04">تصویر پارت</label>
+            <img width="50" src="/File/ShowImage/@Model.Image" />
+
+        </div>
+    </div>
 
 
-        <button class="btn btn-danger" type="submit">حذف</button>
-        <a class="btn btn-warning" asp-action="Index" asp-route-bookId="@Model.BookId">بازگشت</a>
-    </form>
+    <div class="form-row">
+        <div class="col-md-12 mb-3">
+            <textarea readonly class="form-control" asp-for="Text" name="Text"></textarea>
+        </div>
+    </div>
+
+    <button class="btn btn-danger" type="submit">حذف</button>
+    <a class="btn btn-warning" asp-action="Index" asp-route-bookId="@Model.BookId">بازگشت</a>
+</form>
 
 </div>
 

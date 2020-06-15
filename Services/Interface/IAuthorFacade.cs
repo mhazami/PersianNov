@@ -12,5 +12,6 @@ namespace PersianNov.Services.Interface
         Task<Author> Login(string username, string password);
 
         bool CheckBookOwner(Guid authorId, Guid bookId);
+        bool ForgotPassword(string email);
     }
 }
