@@ -1,0 +1,24 @@
+﻿@model PersianNov.DataStructure.BookPart
+
+
+<div>
+    <div>
+        <img src="/File/PartFile/@Model.Id" alt="" />
+    </div>
+    <div class="text-center part-control">
+        <span onclick="getPart(this)" id="NextPart" data-type="next" class="p-2">
+            <i class="fa fa-arrow-right"></i>
+        </span>
+        @Model.PartNumber
+
+        <input type="hidden" id="partid" value="@Model.Id" />
+        @if (Model.PartNumber > 1)
+        {
+            <span onclick="getPart(this)" id="PerPart" data-type="per" class="p-2">
+                <i class="fa fa-arrow-left"></i>
+            </span>
+        }
+
+
+    </div>
+</div>

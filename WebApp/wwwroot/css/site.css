@@ -12,6 +12,10 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     background-color: #333;
     font-family: tanha;
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .navbar {
@@ -202,6 +206,60 @@ figure .buttons > a {
         text-align: justify;
         font-size: 15px;
     }
+
+.csstransformspreserve3d .details ul {
+    direction: rtl;
+}
+
+.details-open .details ul li {
+    text-align: right;
+}
+
+.front {
+    background-size: 100% 100% !important;
+}
+
+.study-box {
+    padding: 10px 0;
+    border-radius: 5px;
+}
+
+    .study-box img {
+        vertical-align: middle;
+        width: 100%
+    }
+
+    .study-box ul {
+        list-style: none;
+        padding: 0;
+    }
+
+        .study-box ul li {
+            margin-bottom: 10px;
+        }
+
+    .study-box .left-btn > a {
+        width: 100%;
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+        .study-box .left-btn > a:hover {
+            color: #fff;
+        }
+
+figcaption a {
+    text-decoration: none;
+    color: #fff;
+}
+
+    figcaption a:hover {
+        text-decoration: none;
+    }
+
+.part-control > span:hover {
+    cursor: pointer;
+}
 
 @media (max-width: 320px) {
     .main-header .logo {

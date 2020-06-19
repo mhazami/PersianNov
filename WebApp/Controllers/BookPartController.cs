@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -95,6 +97,12 @@ namespace Author.Controllers
         {
             var bookPart = PersianNovComponent.Instance.BookPartFacade.Get(id);
             return View(bookPart);
+        }
+
+        [AllowAnonymous]
+        public IActionResult GetPart(Guid id, string type, Guid bookId)
+        {
+            return ViewComponent("BookPartsComponent", new { bookId, id, type });
         }
     }
 }

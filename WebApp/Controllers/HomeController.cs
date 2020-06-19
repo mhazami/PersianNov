@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using PersianNov.DataStructure;
 using PersianNov.Services;
 using WebApp.Models;
 
@@ -15,8 +16,7 @@ namespace WebApp.Controllers
     {
         public async Task<IActionResult> Index()
         {
-            var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
-            var books = await PersianNovComponent.Instance.BookFacade.GetAllAsync();
+            var books = await PersianNovComponent.Instance.BookFacade.WhereAsync(x => x.Enabled && x.FreeStydy && x.Show);
             return View(books);
         }
 

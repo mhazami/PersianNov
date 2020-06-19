@@ -62,19 +62,19 @@ namespace PersianNov.DataStructure
 			set { base.SetPropertyValue("Enabled", value); }
 		}
 
-		private bool? _vIP;
+		private bool _vIP;
 		[IsNullable]
 		[DbType("bit")]
-		public bool? VIP
+		public bool VIP
 		{
 			get { return _vIP; }
 			set { base.SetPropertyValue("VIP", value); }
 		}
 
-		private bool? _approve;
+		private bool _approve;
 		[IsNullable]
 		[DbType("bit")]
-		public bool? Approve
+		public bool Approve
 		{
 			get { return _approve; }
 			set { base.SetPropertyValue("Approve", value); }

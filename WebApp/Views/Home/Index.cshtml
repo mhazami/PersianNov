@@ -1,4 +1,5 @@
-﻿@model IEnumerable<PersianNov.DataStructure.Book>
+﻿@using PersianNov.DataStructure.Tools;
+@model IEnumerable<PersianNov.DataStructure.Book>
 @{
     ViewData["Title"] = "صفحه اصلی";
 }
@@ -14,15 +15,31 @@
 
                     foreach (var item in Model)
                     {
-                        <figure>
-                            <div class="book" data-book="book-@i"></div>
+                        <figure data-id="@item.Id" data-index="@i">
+                            <a href="/رمان-فارسی/@item.Name.SlugMaker()">
+                                <div class="perspective">
+                                    <div class="book" data-book="book-@i">
+                                        <div class="cover">
+                                            <div class="front" style="background: url(/File/ShowImage/@item.Image);">
+                                            </div>
+                                            <div class="inner inner-left">
+                                            </div>
+                                        </div>
+                                        <div class="inner inner-right">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
                             <div class="buttons">
-                                <a href="#">الان بخون</a>
+                                <a href="/رمان-فارسی/@item.Name.SlugMaker()">الان بخون</a>
                                 <a href="#">جزئیات</a>
                             </div>
                             <figcaption>
                                 <h2>
-                                    @item.Name
+                                    <a href="/رمان-فارسی/@item.Name.SlugMaker()">
+                                        @item.Name
+                                    </a>
                                     <span>
                                         @(item.Author!=null? $"{item.Author.FirstName} {item.Author.LastName}":"")
                                     </span>
@@ -43,68 +60,10 @@
                         </figure>
                         i++;
                     }
-                    i = 1;
                 }
 
 
             </div>
-
-            foreach (var item in Model)
-            {
-                <div class="bb-custom-wrapper" id="book-@i">
-                    <div class="bb-bookblock">
-                        <div class="bb-item">
-                            <div class="bb-custom-side page-layout-3">
-                                <div>
-                                    <h3>@item.Name</h3>
-                                    <p>
-                                        @(item.Author!=null?$"{item.Author.FirstName} {item.Author.LastName}":"")
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="bb-custom-side page-layout-3">
-                            </div>
-                        </div>
-                        <div class="bb-item">
-                            <div class="bb-custom-side page-layout-1">
-                                <h3>
-                                    Chapter 9 <span>Nomadic Lifestyle</span>
-                                </h3>
-                            </div>
-                            <div class="bb-custom-side page-layout-1">
-                                <p>Candy canes lollipop macaroon marshmallow gummi bears tiramisu. Dessert croissant cupcake candy canes. Bear claw faworki faworki lemon drops. Faworki marzipan sugar plum jelly-o marzipan cookie.</p>
-                            </div>
-                        </div>
-                        <div class="bb-item">
-                            <div class="bb-custom-side page-layout-2">
-                                <div>
-                                    <h3>Aa</h3>
-                                    <p>Faworki marzipan sugar plum jelly-o marzipan. Soufflé tootsie roll jelly beans. Sweet icing croissant dessert bear claw. Brownie dessert cheesecake danish jelly pudding bear claw soufflé.</p>
-                                </div>
-                                <div>
-                                    <h3>Bb</h3>
-                                    <p>Faworki marzipan sugar plum jelly-o marzipan. Soufflé tootsie roll jelly beans. Sweet icing croissant dessert bear claw. Brownie dessert cheesecake danish jelly pudding bear claw soufflé.</p>
-                                </div>
-                            </div>
-                            <div class="bb-custom-side page-layout-2">
-                                <div>
-                                    <h3>Cc</h3>
-                                    <p>Faworki marzipan sugar plum jelly-o marzipan. Soufflé tootsie roll jelly beans. Sweet icing croissant dessert bear claw. Brownie dessert cheesecake danish jelly pudding bear claw soufflé.</p>
-                                </div>
-                                <div>
-                                    <h3>Dd</h3>
-                                    <p>Faworki marzipan sugar plum jelly-o marzipan. Soufflé tootsie roll jelly beans. Sweet icing croissant dessert bear claw. Brownie dessert cheesecake danish jelly pudding bear claw soufflé.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <nav>
-                        <a href="#" class="bb-nav-prev">Previous</a>
-                        <a href="#" class="bb-nav-next">Next</a>
-                        <a href="#" class="bb-nav-close">Close</a>
-                    </nav>
-                </div>
-            }
 
 
         }

@@ -189,6 +189,7 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("Name", value); }
         }
 
-
+        [DisableAction(DiableAllAction = true)]
+        public List<BookPart> Parts { get; set; }
     }
 }

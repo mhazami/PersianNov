@@ -15,5 +15,6 @@ namespace PersianNov.Services.Interface
         bool Update(Book book, IFormFile image, IFormFile pdf);
 
         bool Delete(Guid id);
+
     }
 }

@@ -70,11 +70,11 @@ namespace Author.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Register(PersianNov.DataStructure.Author author)
+        public IActionResult Register(PersianNov.DataStructure.Author author)
         {
             try
             {
-                if (await PersianNovComponent.Instance.AuthorFacade.InsertAsync(author))
+                if (PersianNovComponent.Instance.AuthorFacade.Insert(author))
                 {
                     this.SetCookie(author);
                     return Redirect("/");
@@ -88,7 +88,7 @@ namespace Author.Controllers
             }
             catch (Exception ex)
             {
-                ViewBag.Message = ex.InnerException.Message;
+                ViewBag.Message = ex.Message;
                 return View(author);
             }
         }

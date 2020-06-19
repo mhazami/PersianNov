@@ -39,14 +39,14 @@
     <div class="form-row">
         <div class="col-md-6 mb-3">
             <label for="VIP">VIP است ؟</label>
-            <input type="radio" value="true" @(Model.VIP.HasValue && Model.VIP.Value ? "checked" : "") name="VIP">بله
-            <input type="radio" value="false" @((Model.VIP.HasValue && !Model.VIP.Value) || !Model.VIP.HasValue ? "checked" : "") name="VIP">خیر
+            <input type="radio" value="true" @(Model.VIP ? "checked" : "") name="VIP">بله
+            <input type="radio" value="false" @(!Model.VIP ? "checked" : "") name="VIP">خیر
         </div>
 
         <div class="col-md-6 mb-3">
             <label for="Enabled">فعال است ؟ </label>
-            <input type="radio" value="true" name="Enabled" @(Model.Enabled == true ? "checked" : "") />بله
-            <input type="radio" value="false" name="Enabled" @(Model.Enabled == false ? "checked" : "") />خیر
+            <input type="radio" value="true" name="Enabled" @(Model.Enabled ? "checked" : "") />بله
+            <input type="radio" value="false" name="Enabled" @(!Model.Enabled ? "checked" : "") />خیر
 
         </div>
     </div>

@@ -1,0 +1,63 @@
+﻿@using Radyn.Utility;
+@model PersianNov.DataStructure.Book
+@{
+    ViewData["Title"] = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-xl-9 col-lg-6 col-md-9 col-sm-12 bg-white study-box">
+        <div class="col-xl-4 col-lg-6 col-md-9 col-sm-12 float-left">
+            <img src="/File/ShowImage/@Model.Image" height="300" />
+            <hr />
+            <div class="text-right left-btn">
+                <a class="btn btn-success">مطالعه ویژه</a>
+                <a class="btn btn-primary">خرید فایل</a>
+            </div>
+
+        </div>
+        <div class="col-xl-8 col-lg-6 col-md-3 col-sm-12 float-right text-right" dir="rtl">
+            <h1>کتاب @Model.Name</h1>
+
+            <ul>
+                <li>
+                    نویسنده : <strong>@Model.Author.FirstName @Model.Author.LastName</strong>
+                </li>
+                <li>
+                    تاریخ انتشار : @Model.PublishDate
+                </li>
+                <li>
+                    ژانر : @(Model.Janre.ToString().ToEnum<PersianNov.DataStructure.Tools.Enums.Janre>().GetDescription())
+                </li>
+                <li>
+                    قیمت : @(Model.Price?.ToString("N0")) تومان
+                </li>
+            </ul>
+
+            <p class="text-justify">
+                خلاصه :
+                <br />
+                @Model.Abstract
+            </p>
+            <hr />
+            <div id="div-part">
+                @await Component.InvokeAsync("BookPartsComponent", new { bookId = Model.Id })
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts{ 
+    <script>
+    function getPart(el) {
+        var type = $(el).attr('data-type');
+        var partid = $('#partid').val();
+        $.get('/BookPart/GetPart', { type: type, id: partid, bookId: '@Model.Id' }, function (data) {
+            $('#div-part').html(data);
+        })
+    }
+    </script>
+}
+
+

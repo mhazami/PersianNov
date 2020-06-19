@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PersianNov.DataStructure;
+using PersianNov.DataStructure.Tools;
 using PersianNov.Services;
 using Radyn.Utility;
 using WebApp.Models;
@@ -129,6 +130,25 @@ namespace Author.Controllers
 
 
         public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [Route("/رمان-فارسی/{title}")]
+        public async Task<IActionResult> Study(string title)
+        {
+            var name = title.RecoverSlug();
+            var book = await PersianNovComponent.Instance.BookFacade.FirstOrDefaultAsync(x => x.Name == name);
+            if (book != null)
+            {
+                return View(book);
+            }
+            return RedirectToAction("NotFound");
+        }
+
+        [AllowAnonymous]
+        public IActionResult NotFound()
         {
             return View();
         }

@@ -58,13 +58,13 @@
         <div class="form-row">
             <div class="col-md-12 mb-3">
                 <label for="exampleFormControlTextarea1">موضوع </label>
-                <label class="form-control" name="Subject" asp-for="Subject" id="Subject" rows="5">@Model.Subject</label>
+                <div class="jumbotron" name="Subject" asp-for="Subject" id="Subject" rows="5">@Model.Subject</div>
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-12 mb-3">
                 <label for="exampleFormControlTextarea1">چکیده </label>
-                <label class="form-control" id="Abstract" asp-for="Abstract" name="Abstract" rows="5">@Model.Abstract</label>
+                <div class="jumbotron" id="Abstract" asp-for="Abstract" name="Abstract" rows="5">@Model.Abstract</div>
             </div>
         </div>
 
