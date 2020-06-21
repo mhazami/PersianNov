@@ -8,5 +8,6 @@ namespace PersianNov.Services.BO
 {
     public sealed class BookPartBO : BusinessBase<BookPart>
     {
+       
     }
 }

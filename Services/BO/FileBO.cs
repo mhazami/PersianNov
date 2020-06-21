@@ -40,6 +40,13 @@ namespace PersianNov.Services.BO
             return base.Delete(connectionHandler, keys);
         }
 
+        public Guid InsertFile(IConnectionHandler connectionHandler,DataStructure.File file)
+        {
+            if (this.Insert(connectionHandler, file))
+                return file.Id;
+            return Guid.Empty;
+        }
+
         public Guid Insert(IConnectionHandler connectionHandler, IFormFile file)
         {
             try

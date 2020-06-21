@@ -32,12 +32,12 @@ namespace Author.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(BookPart BookPart, IFormFile image)
+        public IActionResult Create(BookPart BookPart)
         {
             try
             {
                 BookPart.PublishDate = DateTime.Now.ShamsiDate();
-                if (!PersianNovComponent.Instance.BookPartFacade.Insert(BookPart, image))
+                if (!PersianNovComponent.Instance.BookPartFacade.Insert(BookPart))
                     throw new Exception("خطایی در درج اطلاعات کتاب رخ داده است");
                 return RedirectToAction("Index", new { bookId = BookPart.BookId });
             }
@@ -54,11 +54,11 @@ namespace Author.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(BookPart bookPart, IFormFile image)
+        public IActionResult Edit(BookPart bookPart)
         {
             try
             {
-                if (!PersianNovComponent.Instance.BookPartFacade.Update(bookPart, image))
+                if (!PersianNovComponent.Instance.BookPartFacade.Update(bookPart))
                     throw new Exception("خطایی در ویرایش اطلاعات کتاب رخ داده است");
                 return RedirectToAction("Index", new { bookId = bookPart.BookId });
 
