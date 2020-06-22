@@ -38,7 +38,7 @@ namespace WebApp
                     loginUrl = "/Publisher/Login";
                     break;
                 default:
-                    loginUrl = "/ورود-مخاطب";
+                    loginUrl = "/Customer/Login";
                     break;
             }
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(option =>
@@ -48,7 +48,7 @@ namespace WebApp
             });
             string connectionString = Configuration.GetConnectionString("PersianVonConnectionString");
             string orginUrl = Configuration.GetSection("OrginUrl").Value;
-
+            services.AddSingleton<IConfiguration>(Configuration);
             PersianNovComponent.ConnectionString = connectionString;
             MailSender.OrginUrl = orginUrl;
             services.AddControllersWithViews();

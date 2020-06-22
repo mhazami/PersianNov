@@ -28,7 +28,8 @@
                                         @ViewBag.Message
                                     </div>
                                 </div>
-                                <form class="user" method="post" action="/Customer/Login">
+                                @using (Html.BeginForm("Login", "Customer", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, false, new { @class = "user" }))
+                                {
                                     <div class="form-group">
                                         <input type="email" class="form-control form-control-user" name="username" id="username" aria-describedby="emailHelp" placeholder="نام کاربری یا ایمیل">
                                     </div>
@@ -40,8 +41,8 @@
                                         ورود
                                     </button>
                                     <hr>
-                                 
-                                </form>
+
+                                }
                                 <hr>
                                 <div class="text-center">
                                     <a class="small" href="#">رمز عبورم را فراموش کرده ام</a>

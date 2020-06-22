@@ -1,4 +1,6 @@
 ﻿@using Radyn.Utility;
+@using PersianNov.DataStructure.Tools;
+
 @model PersianNov.DataStructure.Book
 @{
     ViewData["Title"] = Model.Name;
@@ -8,11 +10,13 @@
 <div class="row justify-content-center">
     <div class="col-xl-9 col-lg-6 col-md-9 col-sm-12 bg-white study-box">
         <div class="col-xl-4 col-lg-6 col-md-9 col-sm-12 float-left">
-            <img src="/File/ShowImage/@Model.Image" height="300" />
+            <img src="/File/ShowImage/@Model.Image" class="bookbaner" />
             <hr />
             <div class="text-right left-btn">
-                <a class="btn btn-success">مطالعه ویژه</a>
-                <a class="btn btn-primary">خرید فایل</a>
+                @if (!(bool)ViewBag.VIP)
+                {
+                    <a href="/رمان-فارسی/@Model.Name.SlugMaker()/@Model.Id" class="btn btn-success">مطالعه ویژه</a>
+                }
             </div>
 
         </div>
@@ -48,7 +52,7 @@
     </div>
 </div>
 
-@section Scripts{ 
+@section Scripts{
     <script>
     function getPart(el) {
         var type = $(el).attr('data-type');

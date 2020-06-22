@@ -9,7 +9,7 @@ namespace PersianNov.DataStructure
     [Schema("Book")]
     public sealed class CustomerBook : DataStructureBase<CustomerBook>
     {
-        public Guid _customerId;
+        private Guid _customerId;
         [Key(false)]
         [DbType("uniqueidentifier")]
         public Guid CustomerId
@@ -22,7 +22,7 @@ namespace PersianNov.DataStructure
 
 
 
-        public Guid _bookId;
+        private Guid _bookId;
         [Key(false)]
         [DbType("uniqueidentifier")]
         public Guid BookId
@@ -34,7 +34,7 @@ namespace PersianNov.DataStructure
         public Book Book { get; set; }
 
 
-        public string _number;
+        private string _number;
         [DbType("varchar(10)")]
         public string Number
         {
@@ -42,7 +42,7 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("Number", value); }
         }
 
-        public bool _vIP;
+        private bool _vIP;
         [DbType("bit")]
         public bool VIP
         {

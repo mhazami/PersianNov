@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TParty", "TParty", "{384C57
 		TParty\Framework.dll = TParty\Framework.dll
 		TParty\Radyn.dll = TParty\Radyn.dll
 		TParty\Radyn.Utility.dll = TParty\Radyn.Utility.dll
+		TParty\Radyn.Utility.resources.dll = TParty\Radyn.Utility.resources.dll
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataStructure", "DataStructure\DataStructure.csproj", "{1364B475-ED1C-4D08-BBB4-62C9C98F46D5}"

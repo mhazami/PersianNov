@@ -19,16 +19,16 @@ namespace WebApp.Controllers
             return View(list);
         }
 
-        [Route("/ورود-مخاطب")]
-        [ActionName("Login"), HttpGet]
+        [HttpGet]
         public IActionResult Login()
         {
+            ViewBag.ReturnUrl = HttpContext.Request.Query["ReturnUrl"].ToString();
             ViewBag.Message = "";
             return View();
         }
 
-        [ActionName("Login"), HttpPost]
-        public async Task<IActionResult> Login(string username, string password)
+        [HttpPost]
+        public async Task<IActionResult> Login(string username, string password,string ReturnUrl)
         {
             try
             {
@@ -36,6 +36,8 @@ namespace WebApp.Controllers
                 if (customer != null)
                 {
                     this.SetCookie(customer);
+                    if (!string.IsNullOrEmpty(ReturnUrl))
+                        return Redirect(ReturnUrl);
                     return Redirect("/");
                 }
                 else

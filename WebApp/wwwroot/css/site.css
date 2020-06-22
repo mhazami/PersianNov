@@ -70,8 +70,34 @@ html {
 }
 
 
+.payment {
+    background: #ccc !important;
+}
 
+.zarinpal {
+    text-align: left;
+    margin-top: 20px;
+}
 
+.book-info .form-control {
+    background: #ccc !important;
+    color: #333 !important;
+}
+
+.book-info .abstract {
+    background: #ccc !important;
+    color: #333 !important;
+    border: 1px solid #d1d3e2;
+    border-radius: .35rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: justify;
+}
 
 .border-top {
     border-top: 1px solid #e5e5e5;
@@ -226,27 +252,31 @@ figure .buttons > a {
 
     .study-box img {
         vertical-align: middle;
-        width: 100%
-    }
-
-    .study-box ul {
-        list-style: none;
-        padding: 0;
-    }
-
-        .study-box ul li {
-            margin-bottom: 10px;
-        }
-
-    .study-box .left-btn > a {
         width: 100%;
-        color: #fff;
+    }
+
+.bookbaner {
+    height: 300px;
+}
+
+.study-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+    .study-box ul li {
         margin-bottom: 10px;
     }
 
-        .study-box .left-btn > a:hover {
-            color: #fff;
-        }
+.study-box .left-btn > a {
+    width: 100%;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+    .study-box .left-btn > a:hover {
+        color: #fff;
+    }
 
 figcaption a {
     text-decoration: none;
@@ -318,6 +348,10 @@ figcaption a {
         margin-top: 6px;
         background: #fff;
         color: #5a5c69 !important;
+    }
+
+    .bookbaner {
+        height: 350px;
     }
 }
 

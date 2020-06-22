@@ -16,8 +16,16 @@ namespace WebApp.Controllers
     {
         public async Task<IActionResult> Index()
         {
-            var books = await PersianNovComponent.Instance.BookFacade.WhereAsync(x => x.Enabled && x.FreeStydy && x.Show);
-            return View(books);
+            try
+            {
+                var books = await PersianNovComponent.Instance.BookFacade.WhereAsync(x => x.Enabled && x.FreeStydy && x.Show);
+                return View(books);
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
+          
         }
 
         [Route("/همکاری-با-رمان-فارسی")]

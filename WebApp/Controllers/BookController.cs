@@ -138,10 +138,13 @@ namespace Author.Controllers
         [Route("/رمان-فارسی/{title}")]
         public async Task<IActionResult> Study(string title)
         {
+            var customer = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "Id")?.Value;
             var name = title.RecoverSlug();
             var book = await PersianNovComponent.Instance.BookFacade.FirstOrDefaultAsync(x => x.Name == name);
             if (book != null)
             {
+                var isVip = PersianNovComponent.Instance.CustomerBookFacade.Any(x => x.CustomerId == customer.ToGuid() && x.BookId == book.Id);
+                ViewBag.VIP = isVip;
                 return View(book);
             }
             return RedirectToAction("NotFound");
