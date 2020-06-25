@@ -11,7 +11,7 @@ namespace PersianNov.DataStructure
     [Schema("Payment")]
     public sealed class Payment : DataStructureBase<Payment>
     {
-        public Guid _id;
+        private Guid _id;
         [Key(false)]
         [DbType("uniqueidentifier")]
         public Guid Id
@@ -20,7 +20,7 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("Id", value); }
         }
 
-        public Guid? _customerId;
+        private Guid? _customerId;
         [DbType("uniqueidentifier")]
         public Guid? CustomerId
         {
@@ -30,7 +30,7 @@ namespace PersianNov.DataStructure
         [Assosiation(PropName = "CustomerId")]
         public Customer Customer { get; set; }
 
-        public Guid? _publisherId;
+        private Guid? _publisherId;
         [DbType("uniqueidentifier")]
         public Guid? PublisherId
         {
@@ -41,7 +41,7 @@ namespace PersianNov.DataStructure
         public Publisher Publisher { get; set; }
 
 
-        public Guid? _authorId;
+        private Guid? _authorId;
         [DbType("uniqueidentifier")]
         public Guid? AuthorId
         {
@@ -52,7 +52,7 @@ namespace PersianNov.DataStructure
         public Author Author { get; set; }
 
 
-        public Guid? _orderId;
+        private Guid? _orderId;
         [DbType("uniqueidentifier")]
         public Guid? OrderId
         {
@@ -63,16 +63,16 @@ namespace PersianNov.DataStructure
         public Order Order { get; set; }
 
 
-        public string _number;
-        [DbType("varchar(10)")]
-        public string Number
+        private long _number;
+        [DbType("bigint")]
+        public long Number
         {
             get { return _number; }
             set { base.SetPropertyValue("Number", value); }
         }
 
 
-        public decimal _amount;
+        private decimal _amount;
         [DbType("decimal(8,3)")]
         public decimal Amount
         {
@@ -80,7 +80,7 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("Amount", value); }
         }
 
-        public string _paymentDate;
+        private string _paymentDate;
         [DbType("varchar(10)")]
         public string PaymentDate
         {
@@ -88,7 +88,7 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("PaymentDate", value); }
         }
 
-        public PaymentStatus _paymentStatus;
+        private PaymentStatus _paymentStatus;
         [DbType("tinyint")]
         public PaymentStatus PaymentStatus
         {
@@ -97,7 +97,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public PaymentType _paymentType;
+        private PaymentType _paymentType;
         [DbType("tinyint")]
         public PaymentType PaymentType
         {
@@ -106,7 +106,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public PaymentRole _paymentRole;
+        private PaymentRole _paymentRole;
         [DbType("tinyint")]
         public PaymentRole PaymentRole
         {
@@ -116,7 +116,7 @@ namespace PersianNov.DataStructure
 
 
 
-        public Guid? _imageBankDoc;
+        private Guid? _imageBankDoc;
         [DbType("uniqueidentifier")]
         public Guid? ImageBankDoc
         {

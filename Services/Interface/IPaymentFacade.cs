@@ -8,5 +8,6 @@ namespace PersianNov.Services.Interface
 {
     public interface IPaymentFacade : IBaseFacade<Payment>
     {
+        bool InsertPayment(Guid bookId, Guid customerId, long number);
     }
 }

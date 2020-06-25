@@ -10,7 +10,7 @@ namespace PersianNov.DataStructure
     [Schema("Payment")]
     public sealed class TaskMoney : DataStructureBase<TaskMoney>
     {
-        public Guid _id;
+        private Guid _id;
         [Key(false)]
         [DbType("uniqueidentifier")]
         public Guid Id
@@ -20,7 +20,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public Guid _authorId;
+        private Guid _authorId;
         [DbType("uniqueidentifier")]
         public Guid AuthorId
         {
@@ -31,7 +31,7 @@ namespace PersianNov.DataStructure
         public Author Author { get; set; }
 
 
-        public string _registerDate;
+        private string _registerDate;
         [DbType("varchar(10)")]
         public string RegisterDate
         {
@@ -40,15 +40,15 @@ namespace PersianNov.DataStructure
         }
 
 
-        public string _number;
-        [DbType("varchar(10)")]
-        public string Number
+        private long _number;
+        [DbType("bigint")]
+        public long Number
         {
             get { return _number; }
             set { base.SetPropertyValue("Number", value); }
         }
 
-        public PaymentTaskStatus _status;
+        private PaymentTaskStatus _status;
         [DbType("tinyint")]
         public PaymentTaskStatus Status
         {

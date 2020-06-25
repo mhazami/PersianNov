@@ -1,0 +1,26 @@
+﻿@using PersianNov.DataStructure.Tools;
+@model PersianNov.DataStructure.Book
+@{
+    ViewData["Title"] = "PaymentResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron">
+    @if ((long)ViewBag.code == 0)
+    {
+        <label class="alert alert-danger">
+            خطایی در روند پرداخت رخ داده است لطفا پس از مدتی مجددا تلاش نمایید
+        </label>
+    }
+    else
+    {
+        <h1>
+            با تشکر از خرید و حسن انتخاب شما
+        </h1>
+        <label class="alert alert-success">
+            پرداخت شما با موقیت انجام شد
+        </label>
+        <a href="/رمان-فارسی/@Model.Name.SlugMaker()" class="btn btn-primary">بازگشت با کتاب</a>
+    }
+</div>
+

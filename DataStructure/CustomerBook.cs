@@ -34,9 +34,9 @@ namespace PersianNov.DataStructure
         public Book Book { get; set; }
 
 
-        private string _number;
-        [DbType("varchar(10)")]
-        public string Number
+        private long _number;
+        [DbType("bigint")]
+        public long Number
         {
             get { return _number; }
             set { base.SetPropertyValue("Number", value); }

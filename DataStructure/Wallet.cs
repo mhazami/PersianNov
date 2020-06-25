@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Radyn.Framework;
+using Radyn.Utility;
 
 namespace PersianNov.DataStructure
 {
@@ -9,7 +10,16 @@ namespace PersianNov.DataStructure
     [Schema("Payment")]
     public sealed class Wallet : DataStructureBase<Wallet>
     {
-        public Guid _id;
+        public Wallet()
+        {
+            Enabled = true;
+            Input = 0;
+            Output = 0;
+            Amount = 0;
+            ChangeDate = DateTime.Now.ShamsiDate();
+        }
+
+        private Guid _id;
         [Key(false)]
         [DbType("uniqueidentifier")]
         public Guid Id
@@ -18,7 +28,7 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("Id", value); }
         }
 
-        public bool _enabled;
+        private bool _enabled;
         [DbType("bit")]
         public bool Enabled
         {
@@ -27,7 +37,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public decimal _amount;
+        private decimal _amount;
         [DbType("decimal(8,3)")]
         public decimal Amount
         {
@@ -36,7 +46,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public decimal _input;
+        private decimal _input;
         [DbType("decimal(8,3)")]
         public decimal Input
         {
@@ -45,7 +55,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public decimal _output;
+        private decimal _output;
         [DbType("decimal(8,3)")]
         public decimal Output
         {
@@ -54,7 +64,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public string _changeDate;
+        private string _changeDate;
         [DbType("varchar(10)")]
         public string ChangeDate
         {
@@ -63,16 +73,16 @@ namespace PersianNov.DataStructure
         }
 
 
-        public string _number;
-        [DbType("varchar(10)")]
-        public string Number
+        private long _number;
+        [DbType("bigint")]
+        public long Number
         {
             get { return _number; }
             set { base.SetPropertyValue("Number", value); }
         }
 
 
-        public Guid? _authorId;
+        private Guid? _authorId;
         [DbType("int")]
         public Guid? AuthorId
         {
@@ -82,7 +92,7 @@ namespace PersianNov.DataStructure
         [Assosiation(PropName = "AuthorId")]
         public Author Author { get; set; }
 
-        public Guid? _publisherId;
+        private Guid? _publisherId;
         [DbType("uniqueidentifier")]
         public Guid? PublisherId
         {

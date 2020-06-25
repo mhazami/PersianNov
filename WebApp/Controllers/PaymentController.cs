@@ -34,6 +34,9 @@ namespace WebApp.Controllers
         public async Task<IActionResult> BookPaymentInfo(Guid id, string title)
         {
             var customerId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "Id")?.Value;
+            var isVip = PersianNovComponent.Instance.CustomerBookFacade.Any(x => x.BookId == id && x.CustomerId == customerId.ToGuid());
+            if (isVip)
+                return Redirect($"/رمان-فارسی/{title}");
             var model = new CustomerBook()
             {
                 BookId = id,
@@ -51,14 +54,14 @@ namespace WebApp.Controllers
         {
             try
             {
-                var book = PersianNovComponent.Instance.BookFacade.Get(customerBook.BookId);
-                var customer = PersianNovComponent.Instance.CustomerFacade.Get(customerBook.CustomerId);
+                var book = await PersianNovComponent.Instance.BookFacade.GetAsync(customerBook.BookId);
+                var customer = await PersianNovComponent.Instance.CustomerFacade.GetAsync(customerBook.CustomerId);
                 if (book != null && book.Price != 0)
                 {
-                    var sum = book.Discount != 0 ? book.Price - (book.Price * book.Discount / 100) : book.Price;
+                    var sum = book.Discount > 0 ? book.Price - (book.Price * book.Discount / 100) : book.Price;
                     var payment = new Zarinpal.Payment("b64b52e2-ac94-11ea-8aff-000c295eb8fc", System.Convert.ToInt32(sum));
                     var result = payment.PaymentRequest("پرداخت کتاب " + book.Name,
-                        $"{config.GetSection("OrginUrl").Value}/فاکتور/{customerBook.BookId}",
+                        $"{config.GetSection("OrginUrl").Value}/فاکتور/{customerBook.BookId}/{customerBook.CustomerId}",
                                                 customer.Email);
                     if (result.Result.Status == 100)
                     {
@@ -81,29 +84,6 @@ namespace WebApp.Controllers
             }
         }
 
-        [Route("/فاکتور/{id}")]
-        [Authorize(Roles = Constant.Customer)]
-        public IActionResult PaymentResult(Guid id)
-        {
-            var customerId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "Id")?.Value;
-            if (HttpContext.Request.Query["Status"] != "" &&
-                HttpContext.Request.Query["Status"].ToString().ToLower() == "ok" &&
-                HttpContext.Request.Query["Authority"] != "")
-            {
-                string authority = HttpContext.Request.Query["Authority"].ToString();
-                var book = PersianNovComponent.Instance.BookFacade.Get(id);
-                var sum = book.Discount != 0 ? book.Price - (book.Price * book.Discount / 100) : book.Price;
 
-                var payment = new Zarinpal.Payment("b64b52e2-ac94-11ea-8aff-000c295eb8fc", System.Convert.ToInt32(sum));
-                var res = payment.Verification(authority).Result;
-                if (res.Status == 100)
-                {
-                    ViewBag.code = res.RefId;
-                }
-
-            }
-            ViewBag.code = 0;
-            return View();
-        }
     }
 }

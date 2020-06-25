@@ -28,7 +28,7 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(string username, string password,string ReturnUrl)
+        public async Task<IActionResult> Login(string username, string password, string ReturnUrl)
         {
             try
             {
@@ -91,6 +91,36 @@ namespace WebApp.Controllers
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return Redirect("/");
+        }
+
+        [Route("/فاکتور/{id}/{customerId}")]
+        public IActionResult PaymentResult(Guid id, Guid customerId)
+        {
+            var book = PersianNovComponent.Instance.BookFacade.Get(id);
+            if (HttpContext.Request.Query["Status"] != "" &&
+                HttpContext.Request.Query["Status"].ToString().ToLower() == "ok" &&
+                HttpContext.Request.Query["Authority"] != "")
+            {
+                string authority = HttpContext.Request.Query["Authority"].ToString();
+                var sum = book.Discount > 0 ? book.Price - (book.Price * book.Discount / 100) : book.Price;
+
+                var payment = new Zarinpal.Payment("b64b52e2-ac94-11ea-8aff-000c295eb8fc", System.Convert.ToInt32(sum));
+                var res = payment.Verification(authority).Result;
+                if (res.Status == 100)
+                {
+                    ViewBag.code = res.RefId;
+                    if (PersianNovComponent.Instance.PaymentFacade.InsertPayment(id, customerId, res.RefId))
+                    {
+                        var customer = PersianNovComponent.Instance.CustomerFacade.Get(customerId);
+                        SetCookie(customer);
+                        return View(book);
+
+                    }
+                }
+
+            }
+            ViewBag.code = 0;
+            return View(book);
         }
 
         private async void SetCookie(Customer customer)

@@ -118,9 +118,9 @@ namespace PersianNov.DataStructure
         }
 
 
-        private Janre _janre;
-        [DbType("tinyint")]
-        public Janre Janre
+        private string _janre;
+        [DbType("nvarchar(250)")]
+        public string Janre
         {
             get { return _janre; }
             set { base.SetPropertyValue("Janre", value); }

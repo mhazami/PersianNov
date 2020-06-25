@@ -26,9 +26,7 @@ namespace WebApp.ViewComponents
             else
             {
                 var bougth = PersianNovComponent.Instance.CustomerBookFacade.Any(x => x.CustomerId == userId.ToGuid() && x.BookId == bookId);
-                if (bougth)
-                    query.And(x => x.VIP);
-                else
+                if (!bougth)
                     query.And(x => !x.VIP);
             }
             if (id != null)

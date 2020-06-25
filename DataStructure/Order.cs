@@ -11,7 +11,7 @@ namespace PersianNov.DataStructure
     public sealed class Order : DataStructureBase<Order>
     {
 
-        public Guid _id;
+        private Guid _id;
         [Key(false)]
         [DbType("uniqueidentifier")]
         public Guid Id
@@ -21,7 +21,7 @@ namespace PersianNov.DataStructure
         }
 
 
-        public Guid _customerId;
+        private Guid _customerId;
         [DbType("uniqueidentifier")]
         public Guid CustomerId
         {
@@ -34,7 +34,7 @@ namespace PersianNov.DataStructure
 
 
 
-        public Guid _bookId;
+        private Guid _bookId;
         [DbType("uniqueidentifier")]
         public Guid BookId
         {
@@ -45,15 +45,15 @@ namespace PersianNov.DataStructure
         public Book Book { get; set; }
 
 
-        public string _number;
-        [DbType("varchar(10)")]
-        public string Number
+        private long _number;
+        [DbType("bigint")]
+        public long Number
         {
             get { return _number; }
             set { base.SetPropertyValue("Number", value); }
         }
 
-        public string _orderDate;
+        private string _orderDate;
         [DbType("varchar(10)")]
         public string OrderDate
         {
@@ -61,7 +61,7 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("OrderDate", value); }
         }
 
-        public decimal _amount;
+        private decimal _amount;
         [DbType("decimal(8,3)")]
         public decimal Amount
         {
@@ -69,7 +69,7 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("Amount", value); }
         }
 
-        public int _discount;
+        private int _discount;
         [DbType("int")]
         public int Discount
         {
@@ -77,7 +77,7 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("Discount", value); }
         }
 
-        public decimal _totalAmount;
+        private decimal _totalAmount;
         [DbType("decimal(8,3)")]
         public decimal TotalAmount
         {
@@ -85,16 +85,13 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("TotalAmount", value); }
         }
 
-        public PaymentStatus _status;
+        private PaymentStatus _status;
         [DbType("tinyint")]
         public PaymentStatus Status
         {
             get { return _status; }
             set { base.SetPropertyValue("Status", value); }
         }
-
-
-
 
     }
 }
