@@ -36,7 +36,9 @@ namespace PersianNov.DataStructure.Tools
             [Description("درانتظار پرداخت")]
             WaitForPayment = 2,
             [Description("پرداخت شده")]
-            Paied = 3
+            Paied = 3,
+            [Description("رد شده")]
+            Failed = 4
         }
 
         public enum PaymentStatus : byte

@@ -99,6 +99,14 @@ html {
     text-align: justify;
 }
 
+.bg-green {
+    background: #6df774;
+}
+
+.bg-red {
+    background:#f17a7a;
+}
+
 .border-top {
     border-top: 1px solid #e5e5e5;
 }

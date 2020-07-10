@@ -46,18 +46,18 @@ namespace PersianNov.DataStructure
         }
 
 
-        private decimal _input;
+        private decimal? _input;
         [DbType("decimal(8,3)")]
-        public decimal Input
+        public decimal? Input
         {
             get { return _input; }
             set { base.SetPropertyValue("Input", value); }
         }
 
 
-        private decimal _output;
+        private decimal? _output;
         [DbType("decimal(8,3)")]
-        public decimal Output
+        public decimal? Output
         {
             get { return _output; }
             set { base.SetPropertyValue("Output", value); }
@@ -83,7 +83,7 @@ namespace PersianNov.DataStructure
 
 
         private Guid? _authorId;
-        [DbType("int")]
+        [DbType("uniqueidentifier")]
         public Guid? AuthorId
         {
             get { return _authorId; }
@@ -103,8 +103,16 @@ namespace PersianNov.DataStructure
         public Publisher Publisher { get; set; }
 
 
+        private Guid? _bookId;
+        [DbType("uniqueidentifier")]
+        public Guid? BookId
+        {
+            get { return _bookId; }
+            set { base.SetPropertyValue("BookId", value); }
+        }
+        [Assosiation(PropName = "BookId")]
+        public Book Book { get; set; }
 
 
-   
     }
 }

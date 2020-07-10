@@ -1,0 +1,81 @@
+﻿@using Radyn.Utility;
+@using PersianNov.DataStructure.Tools;
+@model IEnumerable<PersianNov.DataStructure.TaskMoney>
+@{
+    ViewData["Title"] = "WithdrawList";
+    Layout = "~/Views/Shared/_AuthorLayout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">لیست درخواست ها</h1>
+
+        @*<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>*@
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            @*<h6 class="m-0 d-inline font-weight-bold text-primary">
+                    لیست کتاب های شما
+                </h6>*@
+            <div class="mr-1 d-inline">
+                <a asp-area="" asp-action="RegisterWithdraw" asp-controller="TaskMoney" class="btn btn-primary text-white">درخواست برداشت</a>
+            </div>
+            <div class="mr-1 d-inline">
+                موجودی : <span>@ViewBag.Cash</span>
+            </div>
+        </div>
+        <div class="card-body">
+            @if (Model.Count() > 0)
+            {
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>مبلغ</th>
+                                <th>تاریخ درخواست</th>
+                                <th>وضعیت</th>
+                                <th>کد پیگیری</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>مبلغ</th>
+                                <th>تاریخ درخواست</th>
+                                <th>وضعیت</th>
+                                <th>کد پیگیری</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @{
+                                foreach (var item in Model)
+                                {
+                                    <tr class="@(item.Status==Enums.PaymentTaskStatus.Paied?"bg-green":item.Status==Enums.PaymentTaskStatus.Failed?"bg-red":"")">
+                                        <td>@item.Amount.ToString("N0") تومان</td>
+                                        <td>@item.RegisterDate</td>
+                                        <td>@item.Status.GetDescription()</td>
+                                        <td>@item.Number</td>
+
+                                    </tr>
+                                }
+                            }
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="text-center">
+                    در حال حاضر شما کتابی ثبت نکرده اید
+                </div>
+            }
+
+        </div>
+    </div>
+
+</div>

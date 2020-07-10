@@ -48,6 +48,16 @@ namespace PersianNov.DataStructure
             set { base.SetPropertyValue("Number", value); }
         }
 
+        private decimal _amount;
+        [DbType("decimal(18,3)")]
+        public decimal Amount
+        {
+            get { return _amount; }
+            set { base.SetPropertyValue("Amount", value); }
+        }
+
+
+
         private PaymentTaskStatus _status;
         [DbType("tinyint")]
         public PaymentTaskStatus Status

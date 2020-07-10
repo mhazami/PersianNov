@@ -1,0 +1,55 @@
+﻿@model PersianNov.DataStructure.Wallet
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AuthorLayout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <form method="post" enctype="multipart/form-data" action="/Book/Create">
+        @if (Model.Input > 0)
+        {
+            <div class="form-row">
+
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustom03">نوع تراکنش</label>
+                    <label class="form-control">واریز</label>
+
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustom01">عنوان کتاب</label>
+                    <label class="form-control">@Model.Book?.Name</label>
+
+                </div>
+
+            </div>
+
+        }
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom04">کد پیگیری</label>
+                <label class="form-control">@Model.Number</label>
+
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom03">تاریخ ثبت</label>
+                <label class="form-control">@Model.ChangeDate</label>
+
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom04">مبلغ</label>
+                <label class="form-control">@Model.Amount.ToString("N0") تومان</label>
+
+            </div>
+           
+        </div>
+
+        <a class="btn btn-warning" asp-action="Wallet">بازگشت</a>
+
+    </form>
+
+</div>

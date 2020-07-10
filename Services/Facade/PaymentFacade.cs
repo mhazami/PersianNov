@@ -69,6 +69,8 @@ namespace PersianNov.Services.Facade
                     AuthorId = book.AuthorId,
                     Amount = amount,
                     Input = amount,
+                    Number = number,
+                    BookId = bookId
                 };
                 if (!walletBo.Insert(base.ConnectionHandler, wa))
                     throw new KnownException("خطا در ذخیره اطلاعات");

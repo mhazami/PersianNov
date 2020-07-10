@@ -8,5 +8,6 @@ namespace PersianNov.Services.Interface
 {
     public interface IWalletFacade : IBaseFacade<Wallet>
     {
+        decimal GetAuthorAmount(Guid authorId);
     }
 }

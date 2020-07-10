@@ -5,22 +5,45 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="jumbotron">
-    @if ((long)ViewBag.code == 0)
+<div class="jumbotron text-center">
+    @if ((int)ViewBag.Status != 100 && (int)ViewBag.Status != 101)
     {
         <label class="alert alert-danger">
             خطایی در روند پرداخت رخ داده است لطفا پس از مدتی مجددا تلاش نمایید
         </label>
+        <div>
+            <label class="alert alert-warning">
+                کد پیگیری : @((long)ViewBag.code)
+            </label>
+        </div>
     }
-    else
+    else if ((int)ViewBag.Status == 100)
     {
         <h1>
             با تشکر از خرید و حسن انتخاب شما
         </h1>
-        <label class="alert alert-success">
-            پرداخت شما با موقیت انجام شد
-        </label>
-        <a href="/رمان-فارسی/@Model.Name.SlugMaker()" class="btn btn-primary">بازگشت با کتاب</a>
+        <div>
+            <label class="alert alert-success">
+                کد پیگیری : @((long)ViewBag.code)
+            </label>
+        </div>
+        <div>
+            <a href="/رمان-فارسی/@Model.Name.SlugMaker()" class="btn btn-primary">بازگشت با کتاب</a>
+        </div>
+    }
+    else if ((int)ViewBag.Status == 101)
+    {
+        <h1 class="alert alert-danger">
+           خطایی رخ داده است
+        </h1>
+        <div>
+            <label class="alert alert-warning">
+                کد پیگیری : @((long)ViewBag.code)
+            </label>
+        </div>
+        <div>
+            <a href="/رمان-فارسی/@Model.Name.SlugMaker()" class="btn btn-primary">بازگشت با کتاب</a>
+        </div>
     }
 </div>
 

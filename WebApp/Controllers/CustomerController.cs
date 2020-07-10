@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
@@ -97,29 +98,32 @@ namespace WebApp.Controllers
         public IActionResult PaymentResult(Guid id, Guid customerId)
         {
             var book = PersianNovComponent.Instance.BookFacade.Get(id);
+            var customer = PersianNovComponent.Instance.CustomerFacade.Get(customerId);
+
             if (HttpContext.Request.Query["Status"] != "" &&
                 HttpContext.Request.Query["Status"].ToString().ToLower() == "ok" &&
                 HttpContext.Request.Query["Authority"] != "")
             {
                 string authority = HttpContext.Request.Query["Authority"].ToString();
                 var sum = book.Discount > 0 ? book.Price - (book.Price * book.Discount / 100) : book.Price;
-
                 var payment = new Zarinpal.Payment("b64b52e2-ac94-11ea-8aff-000c295eb8fc", System.Convert.ToInt32(sum));
                 var res = payment.Verification(authority).Result;
+                ViewBag.code = res.RefId;
+                ViewBag.Status = res.Status;                
                 if (res.Status == 100)
                 {
-                    ViewBag.code = res.RefId;
+                    
                     if (PersianNovComponent.Instance.PaymentFacade.InsertPayment(id, customerId, res.RefId))
                     {
-                        var customer = PersianNovComponent.Instance.CustomerFacade.Get(customerId);
+
                         SetCookie(customer);
                         return View(book);
 
                     }
                 }
-
+                              
             }
-            ViewBag.code = 0;
+            SetCookie(customer);
             return View(book);
         }
 

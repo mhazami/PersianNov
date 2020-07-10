@@ -1,0 +1,27 @@
+﻿@model PersianNov.DataStructure.TaskMoney
+@{
+    ViewData["Title"] = "درخواست برداشت از کیف پول";
+    Layout = "~/Views/Shared/_AuthorLayout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <form method="post" enctype="multipart/form-data" action="/TaskMoney/RegisterWithdraw">
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">مبلغ  درخواستی</label>
+                <input type="number" class="form-control" name="Amount" id="Amount" />
+
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom02">موجودی</label>
+                <label class="form-control">@ViewBag.Cash</label>
+            </div>
+        </div>
+        <input type="hidden" name="AuthorId" value="@Model.AuthorId" />
+        <button class="btn btn-primary" type="submit">ثبت</button>
+        <a class="btn btn-warning" asp-action="WithdrawList">بازگشت</a>
+
+    </form>
+
+</div>

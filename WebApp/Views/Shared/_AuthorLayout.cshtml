@@ -63,18 +63,26 @@
                     </span>
                 </a>
                 @*<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">مدیریت کتاب:</h6>
-                            <a class="collapse-item" href="buttons.html">تعریف کتاب</a>
-                            <a class="collapse-item" href="cards.html">Cards</a>
-                        </div>
-                    </div>*@
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">مدیریت کتاب:</h6>
+                    <a class="collapse-item" href="buttons.html">تعریف کتاب</a>
+                    <a class="collapse-item" href="cards.html">Cards</a>
+                </div>
+            </div>*@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" asp-action="Wallet" asp-controller="Wallet" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <span>
                         کیف پول
+                    </span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-action="WithdrawList" asp-controller="TaskMoney" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <span>
+                        درخواست ها
                     </span>
                 </a>
             </li>
